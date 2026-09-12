@@ -95,6 +95,7 @@ def main():
               f"Score : {progression.get_score(data)} pts\n")
         print("1) Défis Linux")
         print("2) Défis Windows")
+        print("3) Progression")
         print("0) Quitter\n")
 
         terminal_choice = input("Sélectionnez un terminal : ").strip()
@@ -103,11 +104,31 @@ def main():
             linux_menu(data)
         elif terminal_choice == "2":
             windows_menu(data)
+        elif terminal_choice == "3":
+            show_progress(data)
         elif terminal_choice == "0":
             print("Au revoir")
             break
         else:
             print("Choix invalide !\n")
+
+
+def show_progress(data):
+    print("\n=== PROGRESSION DÉTAILLÉE ===")
+    total_done = progression.count_done(data, "linux") + progression.count_done(data, "windows")
+    total_levels = len(LINUX_LEVELS) + len(WINDOWS_LEVELS)
+    for os_name, levels in (("linux", LINUX_LEVELS), ("windows", WINDOWS_LEVELS)):
+        label = "🐧 Linux" if os_name == "linux" else "🪟 Windows"
+        done = progression.count_done(data, os_name)
+        print(f"\n{label} : {done}/{len(levels)} niveaux")
+        for number, (name, _) in levels.items():
+            mark = "✅" if progression.is_done(data, os_name, number) else "⬜"
+            entry = data.get(os_name, {}).get(number, {})
+            time_txt = progression.format_time(entry.get("time")) if entry.get("time") is not None else "—"
+            print(f"  {mark} {number:>2}. {name}  ·  {time_txt}")
+    pct = (total_done / total_levels * 100) if total_levels else 0
+    print(f"\nScore total : {progression.get_score(data)} pts · "
+          f"{total_done}/{total_levels} niveaux complétés ({pct:.0f}%)\n")
 
 
 def linux_menu(data):
