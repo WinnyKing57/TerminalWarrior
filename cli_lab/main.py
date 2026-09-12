@@ -91,7 +91,8 @@ def main():
     while True:
         print("=== TerminalWarrior ===")
         print(f"\nProgression : Linux {progression.count_done(data, 'linux')}/{len(LINUX_LEVELS)} · "
-              f"Windows {progression.count_done(data, 'windows')}/{len(WINDOWS_LEVELS)}\n")
+              f"Windows {progression.count_done(data, 'windows')}/{len(WINDOWS_LEVELS)} · "
+              f"Score : {progression.get_score(data)} pts\n")
         print("1) Défis Linux")
         print("2) Défis Windows")
         print("0) Quitter\n")
@@ -134,7 +135,8 @@ def linux_menu(data):
         if completed:
             progression.mark_done(data, "linux", choice, elapsed)
             progression.save_progress(data)
-            print(f"\n✅ Niveau {choice} terminé ! Temps : {progression.format_time(elapsed)}")
+            print(f"\n✅ Niveau {choice} terminé ! Temps : {progression.format_time(elapsed)} · "
+                  f"+{progression.points_for('linux', choice)} points")
         else:
             print("\nNiveau non terminé.")
 
@@ -164,7 +166,8 @@ def windows_menu(data):
         if completed:
             progression.mark_done(data, "windows", choice, elapsed)
             progression.save_progress(data)
-            print(f"\n✅ Niveau {choice} terminé ! Temps : {progression.format_time(elapsed)}")
+            print(f"\n✅ Niveau {choice} terminé ! Temps : {progression.format_time(elapsed)} · "
+                  f"+{progression.points_for('windows', choice)} points")
         else:
             print("\nNiveau non terminé.")
 

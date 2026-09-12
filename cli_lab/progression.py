@@ -31,6 +31,7 @@ def mark_done(data, os_name, number, elapsed=None):
     entry = dict(data.get(os_name, {}).get(key, {}))
     if not entry.get("done"):
         entry = {"done": True}
+        entry["score"] = points_for(os_name, key)
         if elapsed is not None:
             entry["time"] = round(elapsed, 1)
     elif elapsed is not None:
@@ -38,6 +39,24 @@ def mark_done(data, os_name, number, elapsed=None):
         if best is None or elapsed < best:
             entry["time"] = round(elapsed, 1)
     data.setdefault(os_name, {})[key] = entry
+
+
+def points_for(os_name, number):
+    number = int(number)
+    if os_name == "linux" and number == 20:
+        return 25
+    if os_name == "windows" and number == 25:
+        return 25
+    return 10
+
+
+def get_score(data):
+    total = 0
+    for os_name in ("linux", "windows"):
+        for key, value in data.get(os_name, {}).items():
+            if value.get("done"):
+                total += points_for(os_name, key)
+    return total
 
 
 def count_done(data, os_name):
