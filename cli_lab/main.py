@@ -10,11 +10,11 @@ if __name__ == "__main__" and __package__ is None:
 from cli_lab.levels.linux import level1_linux_intro as linux_level1, level2_linux_permissions as linux_level2, level3_linux_searching as linux_level3, level4_linux_networking as linux_level4, level5_linux_cryptography as linux_level5
 from cli_lab.levels.linux import level6_linux_processes as linux_level6, level7_linux_services as linux_level7, level8_linux_apt as linux_level8, level9_linux_ufw as linux_level9
 from cli_lab.levels.linux import level10_linux_users as linux_level10, level11_linux_logs as linux_level11, level12_linux_archives as linux_level12, level13_linux_cron as linux_level13
+from cli_lab.levels.linux import level14_linux_env_vars as linux_level14, level15_linux_ports_services as linux_level15, level16_linux_integrity as linux_level16, level17_linux_links_mounts as linux_level17
+from cli_lab.levels.linux import level18_linux_scripts as linux_level18, level19_linux_ssh_hardening as linux_level19
 from cli_lab.levels.windows import level1_windows_recon as win_level1, level2_windows_permissions as win_level2, level3_windows_searching as win_level3, level4_windows_networking as win_level4, level5_windows_cryptography as win_level5, level6_windows_registry as win_level6, level7_windows_tasks_services as win_level7, level8_Windows_event_logs as win_level8, level9_windows_disk_forensics as win_level9
 from cli_lab.levels.windows import (
     level10_windows_powershell as win_level10,
-)
-from cli_lab.levels.windows import (
     level11_windows_processes as win_level11,
     level12_windows_services as win_level12,
     level13_windows_updates as win_level13,
@@ -23,10 +23,12 @@ from cli_lab.levels.windows import (
     level16_windows_event_logs as win_level16,
     level17_windows_archives as win_level17,
     level18_windows_scheduled_tasks as win_level18,
-)
-
-from cli_lab.levels.windows import (
-    level10_windows_powershell as win_level10,
+    level19_windows_env_vars as win_level19,
+    level20_windows_ports_services as win_level20,
+    level21_windows_integrity as win_level21,
+    level22_windows_junctions_disks as win_level22,
+    level23_windows_scripts as win_level23,
+    level24_windows_rdp_hardening as win_level24,
 )
 
 
@@ -66,6 +68,12 @@ def linux_menu():
         print("11) Niveau 11 - Journaux et surveillance")
         print("12) Niveau 12 - Archivage et compression")
         print("13) Niveau 13 - Tâches planifiées (Cron)")
+        print("14) Niveau 14 - Variables d'environnement")
+        print("15) Niveau 15 - Ports et services réseau")
+        print("16) Niveau 16 - Intégrité des fichiers")
+        print("17) Niveau 17 - Liens symboliques et montages")
+        print("18) Niveau 18 - Scripts shell")
+        print("19) Niveau 19 - Durcissement SSH")
         print("0) Retour\n")
 
         choice = input("Sélectionnez un niveau : ").strip()
@@ -96,6 +104,18 @@ def linux_menu():
             linux_level12.main()
         elif choice == "13":
             linux_level13.main()
+        elif choice == "14":
+            linux_level14.main()
+        elif choice == "15":
+            linux_level15.main()
+        elif choice == "16":
+            linux_level16.main()
+        elif choice == "17":
+            linux_level17.main()
+        elif choice == "18":
+            linux_level18.main()
+        elif choice == "19":
+            linux_level19.main()
         elif choice == "0":
             return
         else:
@@ -123,6 +143,12 @@ def windows_menu():
         print("16) Niveau 16 - Journaux d'événements")
         print("17) Niveau 17 - Archivage et extraction")
         print("18) Niveau 18 - Tâches planifiées (schtasks)")
+        print("19) Niveau 19 - Variables d'environnement")
+        print("20) Niveau 20 - Ports et services réseau")
+        print("21) Niveau 21 - Intégrité des fichiers")
+        print("22) Niveau 22 - Jonctions et disques")
+        print("23) Niveau 23 - Scripts batch et PowerShell")
+        print("24) Niveau 24 - Durcissement RDP")
         print("0) Retour\n")
 
         choice = input("Sélectionnez un niveau : ").strip()
@@ -163,6 +189,18 @@ def windows_menu():
             win_level17.run_level()
         elif choice == "18":
             win_level18.run_level()
+        elif choice == "19":
+            win_level19.run_level()
+        elif choice == "20":
+            win_level20.run_level()
+        elif choice == "21":
+            win_level21.run_level()
+        elif choice == "22":
+            win_level22.run_level()
+        elif choice == "23":
+            win_level23.run_level()
+        elif choice == "24":
+            win_level24.run_level()
         elif choice == "0":
             return
         else:

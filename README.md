@@ -39,6 +39,12 @@ Défi de cybersécurité en ligne de commande conteneurisé, développé en Pyth
 11. **Journaux et surveillance** : Retracez une attaque en analysant les journaux | `tail`, `head`, `grep`, `journalctl -xe`, `dmesg`
 12. **Archivage et compression** : Extrayez et analysez une sauvegarde suspecte | `file`, `tar`, `gzip`, `gunzip`
 13. **Tâches planifiées (Cron)** : Découvrez et supprimez une tâche cron malveillante | `crontab`, `cat /etc/crontab`, `ls /etc/cron.d`, `rm`
+14. **Variables d'environnement** : Repérez et corrigez un PATH détourné | `echo $PATH`, `env`, `which`, `export`, `unset`, `set`
+15. **Ports et services réseau** : Découvrez et arrêtez une backdoor sur le port 31337 | `netstat -tulpn`, `ss`, `lsof`, `nmap`, `curl`, `kill`
+16. **Intégrité des fichiers** : Repérez et restaurez un binaire altéré | `sha256sum`, `md5sum`, `cmp`, `cp`
+17. **Liens symboliques et montages** : Neutralisez un lien symbolique malveillant | `ls -la`, `readlink`, `file`, `lsblk`, `rm`, `ln -s`
+18. **Scripts shell** : Créez et exécutez un script de nettoyage | `touch`, `echo`, `cat`, `chmod +x`, `./script.sh`
+19. **Durcissement SSH** : Interdisez la connexion root par mot de passe | `grep`, `sudo sed -i`, `ssh-keygen`, `systemctl restart ssh`
 
 ### 🪟 Niveaux Windows :
 1. **Défi d'introduction** : Naviguez dans les dossiers et découvrez les fichiers cachés | Commandes Windows de base `dir`, `cd`, `type`, `cls`, `echo`
@@ -59,6 +65,12 @@ Défi de cybersécurité en ligne de commande conteneurisé, développé en Pyth
 16. **Journaux d'événements** : Retracez une attaque dans le journal Security | `wevtutil`, `Get-WinEvent`
 17. **Archivage et extraction** : Extrayez et analysez une sauvegarde suspecte | `Expand-Archive`, `tar`, `type`
 18. **Tâches planifiées (schtasks)** : Découvrez et supprimez une tâche malveillante | `schtasks /query`, `/delete`
+19. **Variables d'environnement** : Repérez et corrigez un PATH détourné | `set`, `echo %PATH%`, `set PATH=...`
+20. **Ports et services réseau** : Découvrez et arrêtez une backdoor sur le port 31337 | `netstat -ano`, `findstr`, `tasklist`, `taskkill`, `curl`
+21. **Intégrité des fichiers** : Repérez et restaurez un fichier altéré | `certutil -hashfile`, `Get-FileHash`, `fc /b`, `copy /y`
+22. **Jonctions et disques** : Neutralisez une jonction malveillante | `dir`, `fsutil reparsepoint query`, `wmic logicaldisk`, `rmdir`, `mklink /D`
+23. **Scripts batch et PowerShell** : Créez et exécutez un script de nettoyage | `echo >`, `type`, `where`, `cleanup.bat`
+24. **Durcissement RDP** : Désactivez le Bureau à distance exposé | `reg query`, `reg add`, `sc query TermService`, `netstat`
 
 ## Installation et mise en route
 
