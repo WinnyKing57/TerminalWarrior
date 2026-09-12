@@ -19,8 +19,7 @@ Défi de cybersécurité en ligne de commande conteneurisé, développé en Pyth
 - 🧩 **Niveaux à difficulté croissante** (19 Linux + 24 Windows + 2 bonus)
 - 💻 **Commandes réalistes** (`ls`, `cat`, `cd`, `chmod`, `sudo`, etc.)
 - 📌 **Suivi de progression avec liste de défis**
-- 💾 **Sauvegarde de progression automatique** (fichier JSON)
-- 🏆 **Compteur de score** (points gagnés par niveau terminé)
+- 💾 **Sauvegarde de progression automatique** (fichier JSON + horodatage des niveaux terminés)
 - 🥷 **Niveaux bonus** avec drapeaux (flags) encodés en deux couches (hexadécimal + base64)
 - 🎲 **Scénarios aléatoires** à chaque partie (PID, adresses IP, noms de fichiers)
 - 🐳 **Support Docker complet** (aucune installation requise)
