@@ -6,35 +6,35 @@ import base64
 def build_challenge_list(state):
     return [
         "",
-        f"{'✅' if state[1] else '◻️'} 1) Run 'echo \"secret\" | md5sum' to calculate MD5 hash.",
+        f"{'✅' if state[1] else '◻️'} 1) Exécuter 'echo \"secret\" | md5sum' pour calculer l'empreinte MD5.",
         "",
-        f"{'✅' if state[2] else '◻️'} 2) Run 'openssl enc -aes-256-cbc -in secret.txt -out encrypted.bin' to encrypt a file.",
+        f"{'✅' if state[2] else '◻️'} 2) Exécuter 'openssl enc -aes-256-cbc -in secret.txt -out encrypted.bin' pour chiffrer un fichier.",
         "",
-        f"{'✅' if state[3] else '◻️'} 3) Run 'openssl enc -aes-256-cbc -d -in encrypted.bin -out decrypted.txt' to decrypt a file.",
+        f"{'✅' if state[3] else '◻️'} 3) Exécuter 'openssl enc -aes-256-cbc -d -in encrypted.bin -out decrypted.txt' pour déchiffrer un fichier.",
         "",
-        f"{'✅' if state[4] else '◻️'} 4) Run 'sha256sum secret.txt' to calculate SHA256 hash.",
+        f"{'✅' if state[4] else '◻️'} 4) Exécuter 'sha256sum secret.txt' pour calculer l'empreinte SHA256.",
         "",
-        f"{'✅' if state[5] else '◻️'} 5) Run 'openssl rand -hex 32' to generate a random key.",
+        f"{'✅' if state[5] else '◻️'} 5) Exécuter 'openssl rand -hex 32' pour générer une clé aléatoire.",
         "",
-        f"{'✅' if state[6] else '◻️'} 6) Run 'gpg --symmetric secret.txt' to encrypt with GPG.",
+        f"{'✅' if state[6] else '◻️'} 6) Exécuter 'gpg --symmetric secret.txt' pour chiffrer avec GPG.",
         "",
-        f"{'✅' if state[7] else '◻️'} 7) Run 'gpg --decrypt secret.txt.gpg' to decrypt with GPG."
+        f"{'✅' if state[7] else '◻️'} 7) Exécuter 'gpg --decrypt secret.txt.gpg' pour déchiffrer avec GPG.",
         "",
     ]
 
 def print_help():
-    print(" help - Display this help menu")
-    print(" challenge - Display the current challenges")
-    print(" exit - Exit the terminal")
-    print(" md5sum <file> - Calculate MD5 hash")
-    print(" sha256sum <file> - Calculate SHA256 hash")
-    print(" openssl enc -aes-256-cbc -in <input> -out <output> -encrypt -k <password>")
-    print(" openssl enc -aes-256-cbc -d -in <input> -out <output> -k <password>")
-    print(" openssl rand -hex 32 - Generate random hex key")
-    print(" gpg --symmetric <file> - Encrypt with GPG")
-    print(" gpg --decrypt <file> - Decrypt with GPG")
-    print(" pwd - Print Working Directory")
-    print(" whoami - Display current user")
+    print(" help - Affiche ce menu d'aide")
+    print(" challenge - Affiche les défis en cours")
+    print(" exit - Quitte le terminal")
+    print(" md5sum <fichier> - Calcule l'empreinte MD5")
+    print(" sha256sum <fichier> - Calcule l'empreinte SHA256")
+    print(" openssl enc -aes-256-cbc -in <entrée> -out <sortie> -encrypt -k <mot de passe>")
+    print(" openssl enc -aes-256-cbc -d -in <entrée> -out <sortie> -k <mot de passe>")
+    print(" openssl rand -hex 32 - Génère une clé hexadécimale aléatoire")
+    print(" gpg --symmetric <fichier> - Chiffre avec GPG")
+    print(" gpg --decrypt <fichier> - Déchiffre avec GPG")
+    print(" pwd - Affiche le répertoire courant (Print Working Directory)")
+    print(" whoami - Affiche l'utilisateur courant")
 
 def print_challenges(state):
     for line in build_challenge_list(state):
@@ -54,9 +54,9 @@ def main():
 
     ascii_banner = pyfiglet.figlet_format("TERMINALWARRIOR", font="slant")
     print(ascii_banner)
-    print("\nWelcome to Challenge level 5 (CRYPTOGRAPHY) made by (Diversion/diverter)\n")
-    print("type 'help' and 'challenge' to access help menu and view challenges.")
-    input("Press Enter to continue...")
+    print("\nBienvenue au niveau 5 (CRYPTOGRAPHIE) réalisé par (Diversion/diverter)\n")
+    print("Tapez 'help' et 'challenge' pour accéder au menu d'aide et consulter les défis.")
+    input("Appuyez sur Entrée pour continuer...")
     print("")
 
     print_challenges(challenge_state)
@@ -111,7 +111,7 @@ def main():
             continue
 
         if cmd == "exit":
-            print("Goodbye")
+            print("Au revoir")
             break
 
         if cmd == "md5sum":
@@ -124,7 +124,7 @@ def main():
                 print(f"{md5_hash}  {filename}")
                 if not challenge_state[1]:
                     challenge_state[1] = True
-                    print("\nYou completed challenge 1! Type 'challenge' to see your progress.")
+                    print("\nVous avez terminé le défi 1 ! Tapez 'challenge' pour voir votre progression.")
             else:
                 print(f"md5sum: {filename}: No such file or directory")
             continue
@@ -139,9 +139,22 @@ def main():
                 print(f"{sha256_hash}  {filename}")
                 if not challenge_state[4]:
                     challenge_state[4] = True
-                    print("You completed challenge 4! Type 'challenge' to see your progress.")
+                    print("Vous avez terminé le défi 4 ! Tapez 'challenge' pour voir votre progression.")
             else:
                 print(f"sha256sum: {filename}: No such file or directory")
+            continue
+
+        if cmd == "openssl" and len(args) >= 1 and args[0] == "rand":
+            if len(args) >= 3 and args[1] == "-hex":
+                print("Generating 32-byte random key...")
+                import secrets
+                key = secrets.token_hex(32)
+                print(key)
+                if not challenge_state[5]:
+                    challenge_state[5] = True
+                    print("Vous avez terminé le défi 5 ! Tapez 'challenge' pour voir votre progression.")
+            else:
+                print("Usage: openssl rand -hex 32")
             continue
 
         if cmd == "openssl":
@@ -176,29 +189,16 @@ def main():
                     print("Writing encrypted data to 'encrypted.bin'")
                     if not challenge_state[2]:
                         challenge_state[2] = True
-                        print("You completed challenge 2! Type 'challenge' to see your progress.")
+                        print("Vous avez terminé le défi 2 ! Tapez 'challenge' pour voir votre progression.")
                 elif action == "decrypt":
                     print("Loading 'encrypted.bin' into memory...")
                     print("Decrypting data...")
                     print("Writing decrypted data to 'decrypted.txt'")
                     if not challenge_state[3]:
                         challenge_state[3] = True
-                        print("You completed challenge 3! Type 'challenge' to see your progress.")
+                        print("Vous avez terminé le défi 3 ! Tapez 'challenge' pour voir votre progression.")
             else:
                 print("Usage: openssl enc -aes-256-cbc -in <input> -out <output> [-encrypt|-decrypt] -k <password>")
-            continue
-
-        if cmd == "openssl" and len(args) >= 1 and args[0] == "rand":
-            if len(args) >= 2 and args[1] == "-hex":
-                print("Generating 32-byte random key...")
-                import secrets
-                key = secrets.token_hex(32)
-                print(key)
-                if not challenge_state[5]:
-                    challenge_state[5] = True
-                    print("You completed challenge 5! Type 'challenge' to see your progress.")
-            else:
-                print("Usage: openssl rand -hex 32")
             continue
 
         if cmd == "gpg":
@@ -214,7 +214,7 @@ def main():
                     print("gpg: encrypted with 1 passphrase")
                     if not challenge_state[6]:
                         challenge_state[6] = True
-                        print("You completed challenge 6! Type 'challenge' to see your progress.")
+                        print("Vous avez terminé le défi 6 ! Tapez 'challenge' pour voir votre progression.")
                 else:
                     print(f"gpg: {filename}: No such file or directory")
             elif action == "--decrypt" and len(args) > 1:
@@ -224,7 +224,7 @@ def main():
                     print("gpg: decryption successful")
                     if not challenge_state[7]:
                         challenge_state[7] = True
-                        print("You completed challenge 7! Type 'challenge' to see your progress.")
+                        print("Vous avez terminé le défi 7 ! Tapez 'challenge' pour voir votre progression.")
                 else:
                     print(f"gpg: {filename}: No such file or directory")
             else:

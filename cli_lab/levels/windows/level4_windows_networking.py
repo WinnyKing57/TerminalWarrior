@@ -15,13 +15,13 @@ SERVICE_PORT = "8080"
 
 
 def run_level():
-    title = "LEVEL 4: NETWORKING CHALLENGE"
+    title = "NIVEAU 4 : DÉFI RÉSEAU"
     objectives = [
-        "Identify the target IP from local network info.",
-        "Verify connectivity and locate the open service port.",
-        "Pull the service token with curl."
+        "Identifier l'IP cible à partir des informations réseau locales.",
+        "Vérifier la connectivité et localiser le port de service ouvert.",
+        "Récupérer le jeton du service avec curl."
     ]
-    hint = "Try: 'ipconfig', 'ping <ip>', 'netstat -an', then 'curl http://<ip>:8080/'."
+    hint = "Essayez : 'ipconfig', 'ping <ip>', 'netstat -an', puis 'curl http://<ip>:8080/'."
 
     print_header(title)
     print_objectives(objectives, hint)
@@ -81,7 +81,7 @@ def run_level():
                         print("service=telemetry")
                         print("token=NET_OK:TW_NET_4\n")
                         time.sleep(1)
-                        print_success("Service token captured. Level 4 Complete.")
+                        print_success("Jeton du service capturé. Niveau 4 terminé.")
                         return True
                     else:
                         print("Connection refused. Validate connectivity first.")

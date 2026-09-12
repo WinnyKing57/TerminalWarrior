@@ -14,19 +14,19 @@ def print_header(title):
     print("*" * banner_width)
     print(f"** {title} **".center(banner_width))
     print("*" * banner_width)
-    print("| PLATFORM: Windows CTF by Therootexec")
-    print("| STATUS:   System Status Nominal.")
-    print("| TIP:      Type 'help' to view available commands.")
+    print("| PLATEFORME : Windows CTF par Therootexec")
+    print("| STATUT :    État du système nominal.")
+    print("| ASTUCE :    Tapez 'help' pour voir les commandes disponibles.")
     print("+" + "-" * banner_width + "+")
     print()
 
 def print_objectives(objectives, hint=None):
-    print(":: CURRENT MISSION OBJECTIVES ::")
+    print(":: OBJECTIFS DE MISSION ACTUELS ::")
     for idx, obj in enumerate(objectives, start=1):
         print(f" [{idx}] {obj}")
     if hint:
-        print(f"\n >> HINT: {hint}")
-    print(f"\n Objectives: {len(objectives)} | Status: IN PROGRESS")
+        print(f"\n >> INDICE : {hint}")
+    print(f"\n Objectifs : {len(objectives)} | Statut : EN COURS")
     print("-" * 50)
     print()
 
@@ -34,7 +34,7 @@ def print_success(message):
     print("\n" + "="*60)
     print(f" SUCCESS: {message}")
     print("="*60)
-    input(" Press ENTER to proceed...")
+    input(" Appuyez sur ENTRÉE pour continuer...")
 
 def print_windows_motd():
     build = random.choice(["10.0.19045.4046", "10.0.22621.2861", "10.0.19045.3930"])
@@ -64,13 +64,13 @@ def generic_cmd_handler(cmd, args):
         clear_screen()
         return True
     elif cmd == "help" or cmd == "?":
-        print("\n=== COMMAND HELP ===")
+        print("\n=== AIDE DES COMMANDES ===")
         print(" CORE:   help  cls  exit  whoami  pwd  echo")
         print(" FILE:   dir  cd  type  findstr  where  tree")
         print(" PERM:   attrib  takeown  icacls")
         print(" NET:    ipconfig  ping  tracert  netstat  arp  curl")
         print(" SYS:    reg  schtasks  sc  wevtutil  diskpart  wmic")
-        print("\nTip: Use 'dir /a' to reveal hidden files.")
+        print("\nAstuce : utilisez 'dir /a' pour révéler les fichiers cachés.")
         return True
     elif cmd == "whoami":
         print("user\\desktop-pc234")

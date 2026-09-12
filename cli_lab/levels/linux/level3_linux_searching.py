@@ -5,34 +5,34 @@ import pyfiglet
 def build_challenge_list(state):
     return [
         "",
-        f"{'✅' if state[1] else '◻️'} 1) Run 'ls -la' to reveal the hidden file .security.log.",
+        f"{'✅' if state[1] else '◻️'} 1) Exécuter 'ls -la' pour révéler le fichier caché .security.log.",
         "",
-        f"{'✅' if state[2] else '◻️'} 2) Run 'find . -name .security.log' to locate the hidden log file.",
+        f"{'✅' if state[2] else '◻️'} 2) Exécuter 'find . -name .security.log' pour localiser le fichier journal caché.",
         "",
-        f"{'✅' if state[3] else '◻️'} 3) Run 'locate .security.log' to search the full filesystem.",
+        f"{'✅' if state[3] else '◻️'} 3) Exécuter 'locate .security.log' pour chercher dans tout le système de fichiers.",
         "",
-        f"{'✅' if state[4] else '◻️'} 4) Run 'which grep' and 'whereis grep' to locate the grep utility.",
+        f"{'✅' if state[4] else '◻️'} 4) Exécuter 'which grep' et 'whereis grep' pour localiser l'utilitaire grep.",
         "",
-        f"{'✅' if state[5] else '◻️'} 5) Run 'grep FAILED .security.log' to search the hidden log.",
+        f"{'✅' if state[5] else '◻️'} 5) Exécuter 'grep FAILED .security.log' pour fouiller le journal caché.",
         "",
-        f"{'✅' if state[6] else '◻️'} 6) Use 'grep sshd .security.log' to confirm the service name and complete the level.",
+        f"{'✅' if state[6] else '◻️'} 6) Utiliser 'grep sshd .security.log' pour confirmer le nom du service et terminer le niveau.",
         "",
     ]
 
 
 def print_help():
-    print(" help - Display this help menu")
-    print(" challenge - Display the list of challenges and your progress")
-    print(" exit - Exit the terminal")
-    print(" ls - list files in current directory")
-    print(" ls -la - list all files including hidden")
-    print(" find <path> -name <pattern> - Search for files")
-    print(" locate <pattern> - Search database for a filename")
-    print(" which <command> - Show the path to a command executable")
-    print(" whereis <command> - Locate binaries, source, and manuals")
-    print(" grep <pattern> <file> - Search file content")
-    print(" pwd - Print Working Directory")
-    print(" whoami - Display current user")
+    print(" help - Affiche ce menu d'aide")
+    print(" challenge - Affiche la liste des défis et votre progression")
+    print(" exit - Quitte le terminal")
+    print(" ls - Liste les fichiers du répertoire courant")
+    print(" ls -la - Liste tous les fichiers, y compris les fichiers cachés")
+    print(" find <chemin> -name <motif> - Recherche des fichiers")
+    print(" locate <motif> - Recherche un nom de fichier dans la base de données")
+    print(" which <commande> - Affiche le chemin vers un exécutable de commande")
+    print(" whereis <commande> - Localise les binaires, sources et pages de manuel")
+    print(" grep <motif> <fichier> - Recherche dans le contenu d'un fichier")
+    print(" pwd - Affiche le répertoire courant (Print Working Directory)")
+    print(" whoami - Affiche l'utilisateur courant")
 
 
 def print_challenges(state):
@@ -57,9 +57,9 @@ def main():
     ascii_banner = pyfiglet.figlet_format("TERMINALWARRIOR", font="small")
     print(ascii_banner)
 
-    print("\nWelcome to Challenge level 3 (SEARCHING) made by (Diversion/diversionsec)\n")
-    print("type the commands 'help' and 'challenge' to access help menu and view challenges.")
-    input("Press Enter to continue...")
+    print("\nBienvenue au niveau 3 (RECHERCHE) réalisé par (Diversion/diversionsec)\n")
+    print("Tapez 'help' et 'challenge' pour accéder au menu d'aide et consulter les défis.")
+    input("Appuyez sur Entrée pour continuer...")
     print("")
 
     print_challenges(challenge_state)
@@ -112,7 +112,7 @@ def main():
             continue
 
         if cmd == "exit":
-            print("Goodbye")
+            print("Au revoir")
             break
 
         if cmd == "ls":
@@ -125,7 +125,7 @@ def main():
                 print("-rw-r--r--  1 user user   66 Oct 10 12:00 .security.log")
                 if not challenge_state[1]:
                     challenge_state[1] = True
-                    print("\nYou completed challenge 1! Type 'challenge' to see your progress.")
+                    print("\nVous avez terminé le défi 1 ! Tapez 'challenge' pour voir votre progression.")
             else:
                 print("ls: invalid option")
             continue
@@ -137,9 +137,9 @@ def main():
                     print(hidden_file_path)
                     if not challenge_state[2]:
                         challenge_state[2] = True
-                        print("You completed challenge 2! Type 'challenge' to see your progress.")
+                        print("Vous avez terminé le défi 2 ! Tapez 'challenge' pour voir votre progression.")
                 else:
-                    print("find: ‘{pattern}’: No such file or directory")
+                    print(f"find: '{pattern}': No such file or directory")
             else:
                 print("Usage: find <path> -name <pattern>")
             continue
@@ -153,7 +153,7 @@ def main():
                 print(hidden_file_path)
                 if not challenge_state[3]:
                     challenge_state[3] = True
-                    print("You completed challenge 3! Type 'challenge' to see your progress.")
+                    print("Vous avez terminé le défi 3 ! Tapez 'challenge' pour voir votre progression.")
             else:
                 print(f"locate: {pattern}: No such file or directory")
             continue
@@ -166,7 +166,7 @@ def main():
                 print(grep_path)
                 if not challenge_state[4]:
                     challenge_state[4] = True
-                    print("You completed challenge 4! Type 'challenge' to see your progress.")
+                    print("Vous avez terminé le défi 4 ! Tapez 'challenge' pour voir votre progression.")
             else:
                 print(f"which: no {args[0]} in ({grep_path})")
             continue
@@ -179,7 +179,7 @@ def main():
                 print(f"grep: {grep_path} /usr/share/man/man1/grep.1.gz")
                 if not challenge_state[4]:
                     challenge_state[4] = True
-                    print("You completed challenge 4! Type 'challenge' to see your progress.")
+                    print("Vous avez terminé le défi 4 ! Tapez 'challenge' pour voir votre progression.")
             else:
                 print(f"whereis: {args[0]}: not found")
             continue
@@ -196,10 +196,10 @@ def main():
                     print(line)
                 if pattern.upper() == "FAILED" and matches and not challenge_state[5]:
                     challenge_state[5] = True
-                    print("You completed challenge 5! Type 'challenge' to see your progress.")
+                    print("Vous avez terminé le défi 5 ! Tapez 'challenge' pour voir votre progression.")
                 if pattern.lower() == "sshd" and matches and not challenge_state[6]:
                     challenge_state[6] = True
-                    print("You completed challenge 6! Type 'challenge' to see your progress.")
+                    print("Vous avez terminé le défi 6 ! Tapez 'challenge' pour voir votre progression.")
             else:
                 print(f"grep: {filename}: No such file or directory")
             continue

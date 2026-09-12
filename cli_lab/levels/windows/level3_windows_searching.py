@@ -20,12 +20,12 @@ LOG_CONTENT = (
 
 
 def run_level():
-    title = "LEVEL 3: SEARCHING THE SYSTEM"
+    title = "NIVEAU 3 : RECHERCHE SUR LE SYSTÈME"
     objectives = [
-        "Locate the suspicious audit log file.",
-        "Search the log for the hidden flag."
+        "Localiser le fichier journal d'audit suspect.",
+        "Chercher le drapeau caché dans le journal."
     ]
-    hint = "Use 'tree' to map folders, 'where /r . audit.log' to locate it, and 'findstr FLAG audit.log'."
+    hint = "Utilisez 'tree' pour visualiser les dossiers, 'where /r . audit.log' pour le localiser, et 'findstr FLAG audit.log'."
 
     print_header(title)
     print_objectives(objectives, hint)
@@ -77,7 +77,7 @@ def run_level():
                     print("\n[SEARCH RESULTS]")
                     print("12:01:20 ALERT FLAG_KEY:HUNT3R_L0G_TRACER")
                     time.sleep(1)
-                    print_success("Flag found in logs. Level 3 Complete.")
+                    print_success("Drapeau trouvé dans les journaux. Niveau 3 terminé.")
                     return True
                 else:
                     print("findstr: Search string or file name not specified.")

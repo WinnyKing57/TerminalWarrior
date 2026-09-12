@@ -11,12 +11,12 @@ from .utils import (
 
 
 def run_level():
-    title = "LEVEL 8: EVENT LOG FORENSICS"
+    title = "NIVEAU 8 : FORENSIQUE DES JOURNAUX D'ÉVÉNEMENTS"
     objectives = [
-        "Analyze Security event logs for suspicious activity.",
-        "Identify the incident ID from failed logons."
+        "Analyser les journaux d'événements de sécurité à la recherche d'activités suspectes.",
+        "Identifier l'ID d'incident lié aux échecs de connexion."
     ]
-    hint = "Try: wevtutil qe Security /c:10 /rd:true"
+    hint = "Essayez : wevtutil qe Security /c:10 /rd:true"
 
     print_header(title)
     print_objectives(objectives, hint)
@@ -44,7 +44,7 @@ def run_level():
                     print("  Failure Reason: Unknown user name or bad password")
                     print("  Incident ID: EVT-8-A9\n")
                     time.sleep(1)
-                    print_success("Incident traced. Flag: TW_EVENT_TRACE_8")
+                    print_success("Incident retracé. Flag : TW_EVENT_TRACE_8")
                     return True
                 else:
                     print("wevtutil: log name not specified.")

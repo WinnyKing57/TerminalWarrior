@@ -27,12 +27,12 @@ def rot13(text):
 
 
 def run_level():
-    title = "LEVEL 5: CRYPTOGRAPHY & DECODING"
+    title = "NIVEAU 5 : CRYPTOGRAPHIE ET DÉCODAGE"
     objectives = [
-        "Decode the Base64 file with Windows utilities.",
-        "Solve the simple cipher to reveal the final flag."
+        "Décoder le fichier Base64 avec les utilitaires Windows.",
+        "Résoudre le chiffrement simple pour révéler le drapeau final."
     ]
-    hint = "Use 'certutil -decode message.b64 message.txt' then decipher ROT13."
+    hint = "Utilisez 'certutil -decode message.b64 message.txt' puis déchiffrez le ROT13."
 
     print_header(title)
     print_objectives(objectives, hint)
@@ -85,7 +85,7 @@ def run_level():
                     print(decoded)
                     if "FINAL_FLAG:" in decoded:
                         time.sleep(1)
-                        print_success("Cipher solved. Level 5 Complete.")
+                        print_success("Chiffrement résolu. Niveau 5 terminé.")
                         return True
                 else:
                     print("Usage: rot13 <text>")

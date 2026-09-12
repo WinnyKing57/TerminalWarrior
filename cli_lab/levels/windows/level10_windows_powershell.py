@@ -19,12 +19,12 @@ TASKS_CONTENT = (
 
 
 def run_level():
-    title = "LEVEL 10: POWERSHELL SCRIPTING CHALLENGE"
+    title = "NIVEAU 10 : DÉFI DE SCRIPTS POWERSHELL"
     objectives = [
-        "Use PowerShell to filter text and extract the flag.",
-        "Automate the search rather than scanning manually."
+        "Utiliser PowerShell pour filtrer le texte et extraire le drapeau.",
+        "Automatiser la recherche au lieu de tout lire manuellement."
     ]
-    hint = "Try: powershell -command \"Get-Content tasks.txt | Select-String FLAG\""
+    hint = "Essayez : powershell -command \"Get-Content tasks.txt | Select-String FLAG\""
 
     print_header(title)
     print_objectives(objectives, hint)
@@ -59,7 +59,7 @@ def run_level():
                 if "tasks.txt" in lower and ("select-string" in lower or "where-object" in lower):
                     print("\nMatchInfo: gamma: FLAG=TW_POWERSHELL_10\n")
                     time.sleep(1)
-                    print_success("Automation complete. Level 10 Complete.")
+                    print_success("Automatisation terminée. Niveau 10 terminé.")
                     return True
                 else:
                     print("PowerShell: Command executed. No matches found.")

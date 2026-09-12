@@ -4,37 +4,37 @@ import pyfiglet
 def build_challenge_list(state):
     return [
         "",
-        f"{'✅' if state[1] else '◻️'} 1) Run 'ping 8.8.8.8' to test network connectivity.",
+        f"{'✅' if state[1] else '◻️'} 1) Exécuter 'ping 8.8.8.8' pour tester la connectivité réseau.",
         "",
-        f"{'✅' if state[2] else '◻️'} 2) Run 'traceroute google.com' to trace the route to a host.",
+        f"{'✅' if state[2] else '◻️'} 2) Exécuter 'traceroute google.com' pour tracer la route vers un hôte.",
         "",
-        f"{'✅' if state[3] else '◻️'} 3) Run 'ifconfig' or 'ip addr' to view network interfaces.",
+        f"{'✅' if state[3] else '◻️'} 3) Exécuter 'ifconfig' ou 'ip addr' pour voir les interfaces réseau.",
         "",
-        f"{'✅' if state[4] else '◻️'} 4) Run 'netstat -tuln' to display listening ports.",
+        f"{'✅' if state[4] else '◻️'} 4) Exécuter 'netstat -tuln' pour afficher les ports en écoute.",
         "",
-        f"{'✅' if state[5] else '◻️'} 5) Run 'nslookup google.com' or 'dig google.com' to resolve DNS.",
+        f"{'✅' if state[5] else '◻️'} 5) Exécuter 'nslookup google.com' ou 'dig google.com' pour résoudre le DNS.",
         "",
-        f"{'✅' if state[6] else '◻️'} 6) Run 'ssh user@localhost' to test SSH connectivity (password: user).",
+        f"{'✅' if state[6] else '◻️'} 6) Exécuter 'ssh user@localhost' pour tester la connexion SSH (mot de passe : user).",
         "",
-        f"{'✅' if state[7] else '◻️'} 7) Use 'nmap localhost' to scan for open ports.",
+        f"{'✅' if state[7] else '◻️'} 7) Utiliser 'nmap localhost' pour scanner les ports ouverts.",
         "",
     ]
 
 def print_help():
-    print(" help - Display this help menu")
-    print(" challenge - Display the current challenges")
-    print(" exit - Exit the terminal")
-    print(" ping <host> - Test network connectivity")
-    print(" traceroute <host> - Trace route to host")
-    print(" ifconfig - Display network interfaces (deprecated, use 'ip addr')")
-    print(" ip addr - Display network interfaces")
-    print(" netstat -tuln - Show listening ports")
-    print(" nslookup <host> - Resolve DNS name")
-    print(" dig <host> - Alternative DNS resolution tool")
-    print(" ssh <user@host> - Connect via SSH")
-    print(" nmap <host> - Network port scanning")
-    print(" pwd - Print Working Directory")
-    print(" whoami - Display current user")
+    print(" help - Affiche ce menu d'aide")
+    print(" challenge - Affiche les défis en cours")
+    print(" exit - Quitte le terminal")
+    print(" ping <hôte> - Teste la connectivité réseau")
+    print(" traceroute <hôte> - Trace la route vers un hôte")
+    print(" ifconfig - Affiche les interfaces réseau (obsolète, utiliser 'ip addr')")
+    print(" ip addr - Affiche les interfaces réseau")
+    print(" netstat -tuln - Affiche les ports en écoute")
+    print(" nslookup <hôte> - Résout un nom DNS")
+    print(" dig <hôte> - Outil alternatif de résolution DNS")
+    print(" ssh <utilisateur@hôte> - Se connecte via SSH")
+    print(" nmap <hôte> - Scanne les ports réseau")
+    print(" pwd - Affiche le répertoire courant (Print Working Directory)")
+    print(" whoami - Affiche l'utilisateur courant")
 
 def print_challenges(state):
     for line in build_challenge_list(state):
@@ -54,9 +54,9 @@ def main():
 
     ascii_banner = pyfiglet.figlet_format("TERMINALWARRIOR", font="slant")
     print(ascii_banner)
-    print("\nWelcome to Challenge level 4 (NETWORKING) made by (Diversion/diverter)\n")
-    print("type 'help' and 'challenge' to access help menu and view challenges.")
-    input("Press Enter to continue...")
+    print("\nBienvenue au niveau 4 (RÉSEAU) réalisé par (Diversion/diverter)\n")
+    print("Tapez 'help' et 'challenge' pour accéder au menu d'aide et consulter les défis.")
+    input("Appuyez sur Entrée pour continuer...")
     print("")
 
     print_challenges(challenge_state)
@@ -104,7 +104,7 @@ def main():
             continue
 
         if cmd == "exit":
-            print("Goodbye")
+            print("Au revoir")
             break
 
         if cmd == "ping":
@@ -118,7 +118,7 @@ def main():
                 print("64 bytes from 8.8.8.8: icmp_seq=2 ttl=119 time=24.8 ms")
                 if not challenge_state[1]:
                     challenge_state[1] = True
-                    print("\nYou completed challenge 1! Type 'challenge' to see your progress.")
+                    print("\nVous avez terminé le défi 1 ! Tapez 'challenge' pour voir votre progression.")
             else:
                 print(f"ping: unknown host {host}")
             continue
@@ -135,7 +135,7 @@ def main():
                 print(" 3  142.250.74.14  25.345 ms  25.678 ms  25.901 ms")
                 if not challenge_state[2]:
                     challenge_state[2] = True
-                    print("You completed challenge 2! Type 'challenge' to see your progress.")
+                    print("Vous avez terminé le défi 2 ! Tapez 'challenge' pour voir votre progression.")
             else:
                 print(f"traceroute: unknown host {host}")
             continue
@@ -150,7 +150,7 @@ def main():
                 print("    inet6 fe80::1234:5678:9abc:def0/64 scope link")
                 if not challenge_state[3]:
                     challenge_state[3] = True
-                    print("You completed challenge 3! Type 'challenge' to see your progress.")
+                    print("Vous avez terminé le défi 3 ! Tapez 'challenge' pour voir votre progression.")
             else:
                 print("Usage: ip addr or ifconfig")
             continue
@@ -165,7 +165,7 @@ def main():
                 print("udp        0      0 0.0.0.0:53              0.0.0.0:*               LISTEN")
                 if not challenge_state[4]:
                     challenge_state[4] = True
-                    print("You completed challenge 4! Type 'challenge' to see your progress.")
+                    print("Vous avez terminé le défi 4 ! Tapez 'challenge' pour voir votre progression.")
             else:
                 print("Usage: netstat -tuln")
             continue
@@ -186,7 +186,7 @@ def main():
                 print("Address: 2a00:1450:4009:80c::200e")
                 if not challenge_state[5]:
                     challenge_state[5] = True
-                    print("You completed challenge 5! Type 'challenge' to see your progress.")
+                    print("Vous avez terminé le défi 5 ! Tapez 'challenge' pour voir votre progression.")
             else:
                 print(f"nslookup: unable to resolve {host}: Unknown host")
             continue
@@ -204,7 +204,7 @@ def main():
                     print("user@localhost:~$ ")
                     if not challenge_state[6]:
                         challenge_state[6] = True
-                        print("You completed challenge 6! Type 'challenge' to see your progress.")
+                        print("Vous avez terminé le défi 6 ! Tapez 'challenge' pour voir votre progression.")
                 else:
                     print("Permission denied")
             else:
@@ -228,7 +228,7 @@ def main():
                 print("53/tcp open  domain")
                 if not challenge_state[7]:
                     challenge_state[7] = True
-                    print("You completed challenge 7! Type 'challenge' to see your progress.")
+                    print("Vous avez terminé le défi 7 ! Tapez 'challenge' pour voir votre progression.")
             else:
                 print(f"Nmap scan report for {host}")
                 print("Host is up (0.00012s latency).")
@@ -237,7 +237,7 @@ def main():
                 print("22/tcp open  ssh")
                 if not challenge_state[7]:
                     challenge_state[7] = True
-                    print("You completed challenge 7! Type 'challenge' to see your progress.")
+                    print("Vous avez terminé le défi 7 ! Tapez 'challenge' pour voir votre progression.")
             continue
 
         if cmd == "pwd":

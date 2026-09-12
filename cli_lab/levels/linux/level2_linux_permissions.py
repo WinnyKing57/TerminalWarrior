@@ -5,36 +5,36 @@ import pyfiglet
 def build_challenge_list(state):
     return [
         "",
-        f"{'✅' if state[1] else '◻️'} 1) Use ls -la to find locked file hidden_data.txt.",
+        f"{'✅' if state[1] else '◻️'} 1) Utiliser ls -la pour trouver le fichier verrouillé hidden_data.txt.",
         "",
-        f"{'✅' if state[2] else '◻️'} 2) Use read to identify the permissions of hidden_data.txt.",
+        f"{'✅' if state[2] else '◻️'} 2) Utiliser read pour identifier les permissions de hidden_data.txt.",
         "",
-        f"{'✅' if state[3] else '◻️'} 3) Use su to switch user to root.",
+        f"{'✅' if state[3] else '◻️'} 3) Utiliser su pour passer à l'utilisateur root.",
         "",
-        f"{'✅' if state[4] else '◻️'} 4) Use chown to change owner of hidden_data.txt to user.",
+        f"{'✅' if state[4] else '◻️'} 4) Utiliser chown pour changer le propriétaire de hidden_data.txt en user.",
         "",
-        f"{'✅' if state[5] else '◻️'} 5) Now try to read hidden_data.txt again and confirm access.",
+        f"{'✅' if state[5] else '◻️'} 5) Relire hidden_data.txt pour confirmer l'accès.",
         "",
-        f"{'✅' if state[6] else '◻️'} 6) Run ls to find HelloWorld.exe and run read on HelloWorld.exe.",
+        f"{'✅' if state[6] else '◻️'} 6) Exécuter ls pour trouver HelloWorld.exe puis read dessus.",
         "",
-        f"{'✅' if state[7] else '◻️'} 7) Run su to switch to root, chmod HelloWorld.exe to 777, then read it again to finish the challenge.",
+        f"{'✅' if state[7] else '◻️'} 7) Passer à root avec su, chmod 777 sur HelloWorld.exe, puis relire pour finir le défi.",
         "",
     ]
 
 
 def print_help():
-    print(" help - Display this help menu")
-    print(" challenge - Display the list of challenges and your progress")
-    print(" exit - Exit the terminal")
-    print(" ls - list files in current directory")
-    print(" ls -la - list all files and permissions")
-    print(" read <file> - Read a file or inspect its permissions")
-    print(" cat <file> - Alias for read")
-    print(" pwd - Print Working Directory")
-    print(" whoami - Displays the current user")
-    print(" su <username> - Switch user")
-    print(" chmod <octal> <file> - Change file permissions, find out more about octal permissions at https://www.linux.com/training-tutorials/understanding-linux-file-permissions/")
-    print(" chown <username> <file> - Modify file ownership")
+    print(" help - Affiche ce menu d'aide")
+    print(" challenge - Affiche la liste des défis et votre progression")
+    print(" exit - Quitte le terminal")
+    print(" ls - Liste les fichiers du répertoire courant")
+    print(" ls -la - Liste tous les fichiers et leurs permissions")
+    print(" read <fichier> - Lit un fichier ou inspecte ses permissions")
+    print(" cat <fichier> - Alias de read")
+    print(" pwd - Affiche le répertoire courant (Print Working Directory)")
+    print(" whoami - Affiche l'utilisateur courant")
+    print(" su <utilisateur> - Change d'utilisateur")
+    print(" chmod <octal> <fichier> - Modifie les permissions du fichier, en savoir plus sur les permissions octales sur https://www.linux.com/training-tutorials/understanding-linux-file-permissions/")
+    print(" chown <utilisateur> <fichier> - Modifie le propriétaire du fichier")
 
 
 def print_challenges(state):
@@ -59,9 +59,9 @@ def main():
     ascii_banner = pyfiglet.figlet_format("TERMINALWARRIOR", font="small")
     print(ascii_banner)
 
-    print("\nWelcome to level 2 (PERMISSIONS & OWNERSHIP) made by (Diversion/diversionsec)\n")
-    print("type the commands 'help' and 'challenge' to access help menu and view challenges.")
-    input("Press Enter to continue...")
+    print("\nBienvenue au niveau 2 (PERMISSIONS & PROPRIÉTÉ) réalisé par (Diversion/diversionsec)\n")
+    print("Tapez 'help' et 'challenge' pour accéder au menu d'aide et consulter les défis.")
+    input("Appuyez sur Entrée pour continuer...")
     print("")
 
     print_challenges(challenge_state)
@@ -113,7 +113,7 @@ def main():
             continue
 
         if cmd == "exit":
-            print("Goodbye")
+            print("Au revoir")
             break
 
         if cmd == "ls":
@@ -127,7 +127,7 @@ def main():
                 print(f"-{helloworld_perms}  1 {helloworld_owner} {helloworld_group} 8765 Oct  3 12:00 HelloWorld.exe")
                 if not challenge_state[1]:
                     challenge_state[1] = True
-                    print("\nYou completed challenge 1! Type 'challenge' to see your progress.")
+                    print("\nVous avez terminé le défi 1 ! Tapez 'challenge' pour voir votre progression.")
             else:
                 print("ls: invalid option")
             continue
@@ -141,12 +141,12 @@ def main():
                 print(f"-{hidden_data_perms}  1 {hidden_data_owner} {hidden_data_group}   32 Oct  3 12:00 hidden_data.txt")
                 if not challenge_state[2]:
                     challenge_state[2] = True
-                    print("You completed challenge 2! Type 'challenge' to see your progress.")
+                    print("Vous avez terminé le défi 2 ! Tapez 'challenge' pour voir votre progression.")
                 if current_user == "root" or hidden_data_owner == current_user:
                     print("Hidden data contents displayed.")
                     if current_user == "user" and hidden_data_owner == "user" and not challenge_state[5]:
                         challenge_state[5] = True
-                        print("You completed challenge 5! Type 'challenge' to see your progress.")
+                        print("Vous avez terminé le défi 5 ! Tapez 'challenge' pour voir votre progression.")
                 else:
                     print("Access denied: Permission denied.")
             elif filename == "root_password.txt":
@@ -155,12 +155,12 @@ def main():
                 print(f"-{helloworld_perms}  1 {helloworld_owner} {helloworld_group} 8765 Oct  3 12:00 HelloWorld.exe")
                 if current_user == "user" and not challenge_state[6]:
                     challenge_state[6] = True
-                    print("You completed challenge 6! Type 'challenge' to see your progress.")
+                    print("Vous avez terminé le défi 6 ! Tapez 'challenge' pour voir votre progression.")
                 if current_user == "root" and helloworld_perms == "rwxrwxrwx":
                     print("HelloWorld.exe read successfully.")
                     if not challenge_state[7]:
                         challenge_state[7] = True
-                        print("You completed challenge 7! Type 'challenge' to see your progress.")
+                        print("Vous avez terminé le défi 7 ! Tapez 'challenge' pour voir votre progression.")
                 elif current_user == "root":
                     print("Access denied: File is not executable by all users.")
                 else:
@@ -192,7 +192,7 @@ def main():
                     print("Root access granted.")
                     if not challenge_state[3]:
                         challenge_state[3] = True
-                        print("You completed challenge 3! Type 'challenge' to see your progress.")
+                        print("Vous avez terminé le défi 3 ! Tapez 'challenge' pour voir votre progression.")
                 else:
                     print("Authentication failure")
             elif target == "user" and current_user == "root":
@@ -221,7 +221,7 @@ def main():
             print("Ownership of hidden_data.txt changed to user.")
             if not challenge_state[4]:
                 challenge_state[4] = True
-                print("You completed challenge 4! Type 'challenge' to see your progress.")
+                print("Vous avez terminé le défi 4 ! Tapez 'challenge' pour voir votre progression.")
             continue
 
         if cmd == "chmod":

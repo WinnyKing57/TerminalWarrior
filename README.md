@@ -2,79 +2,86 @@
 <img src="logo.gif">
 </p>
 
-A containersized command-line cybersecurity challenge built in Python, simulating a Linux/Windows terminal where players solve hacking-style puzzles using real Linux/Windows commands.
+Défi de cybersécurité en ligne de commande conteneurisé, développé en Python, simulant un terminal Linux/Windows où les joueurs résolvent des énigmes de style hacking en utilisant de vraies commandes Linux/Windows.
 
-##  Overview ![Python](https://img.shields.io/badge/python-3.9%2B-blue) ![License](https://img.shields.io/badge/license-MIT-green) [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/diversionsec/TerminalWarrior) [![GitHub Stars](https://img.shields.io/github/stars/diversionsec/TerminalWarrior?style=social)](https://github.com/diversionsec/TerminalWarrior)
-**TerminalWarrior** is an interactive command-line training game where players explore a simulated Linux/Windows filesystem to uncover hidden flags, passwords, and secrets using real terminal commands.
+> **ℹ️ À propos de ce dépôt** : il s'agit d'un **fork en français** du projet
+> [TerminalWarrior](https://github.com/diversionsec/TerminalWarrior) (contenu
+> original en anglais). Les textes du jeu (menus, défis, indices, aide,
+> messages de progression) ont été traduits en français. Pour rester jouable,
+> les **commandes à saisir**, les noms de fichiers et les sorties simulant un
+> vrai terminal sont conservées en anglais.
 
-## ✨ Features
-- 🟦 **Linux/Windows-style terminal simulation** (Python-only)
-- 🧩 **Multiple levels with increasing difficulty**
-- 💻 **Realistic commands** (`ls`, `cat`, `cd`, `chmod`, `sudo`, etc.)
-- 📌 **Progress tracking with challenge checklist**
-- 🐳 **Full Docker support** (no installations required)
-- 🖥️ **Cross-platform** — Windows, macOS, Linux
+##  Vue d'ensemble ![Python](https://img.shields.io/badge/python-3.9%2B-blue) ![License](https://img.shields.io/badge/licence-MIT-green) [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/WinnyKing57/TerminalWarrior) [![GitHub Stars](https://img.shields.io/github/stars/WinnyKing57/TerminalWarrior?style=social)](https://github.com/WinnyKing57/TerminalWarrior)
+**TerminalWarrior** est un jeu d'entraînement interactif en ligne de commande où les joueurs explorent un système de fichiers Linux/Windows simulé pour découvrir des drapeaux (flags), mots de passe et secrets en utilisant de vraies commandes de terminal.
 
-## Levels Overview
+## ✨ Fonctionnalités
+- 🟦 **Simulation de terminal style Linux/Windows** (Python uniquement)
+- 🧩 **Plusieurs niveaux à difficulté croissante**
+- 💻 **Commandes réalistes** (`ls`, `cat`, `cd`, `chmod`, `sudo`, etc.)
+- 📌 **Suivi de progression avec liste de défis**
+- 🐳 **Support Docker complet** (aucune installation requise)
+- 🖥️ **Multi-plateforme** — Windows, macOS, Linux
+
+## Vue d'ensemble des niveaux
 
 ---
-### 🐧 Linux Terminal Levels:
-1. **Intro Challenge**: Explore directories and find hidden files | Basic Linux commands `ls`, `cat`, `cd`, `pwd`, `whoami`
-2. **Permissions & Ownership**: Learn how to view and modify file permissions | `chmod`, `chown`, `sudo`, `su`
-3. **Searching the system**: Find hidden files and analyze logs | `grep`, `find`, `locate`, `which` `whereis`
-4. **Networking Challenge**: Discover hosts and services | `ping`, `netcat`, `traceroute`, `nmap`
-5. **Cryptography & Decoding**: Decode hidden messages and hash files | `base64`, `hashing`, `simple ciphers`
+### 🐧 Niveaux Linux :
+1. **Défi d'introduction** : Explorez les répertoires et trouvez les fichiers cachés | Commandes Linux de base `ls`, `cat`, `cd`, `pwd`, `whoami`
+2. **Permissions et propriété** : Apprenez à consulter et modifier les permissions des fichiers | `chmod`, `chown`, `sudo`, `su`
+3. **Recherche sur le système** : Trouvez les fichiers cachés et analysez les journaux | `grep`, `find`, `locate`, `which`, `whereis`
+4. **Défi réseau** : Découvrez les hôtes et les services | `ping`, `netcat`, `traceroute`, `nmap`
+5. **Cryptographie et décodage** : Décodez les messages cachés et les fichiers de hachage | `base64`, hachage, chiffrements simples
 
-### 🪟 Windows Terminal Levels:
-1. **Intro challenge**: Navigate folders and uncover hidden files | Basic Window commands `dir`, `cd`, `type`, `cls`, `echo`
-2. **Permissions & Ownership**: View and edit file rights | `icals`, `attrib`, `takeown`
-3. **Searching the System**: Hunt for hiden files and read logs | `findstr`, `where`, `tree`
-4. **Networking Challenge**: Scan the network and check services | `ping`, `tracert`, `netstat`, `curl`, `ipconfig`
-5. **Cryptography & Decoding**: Decode messages and inspect hashes | `base64`, `certutil`, `simple ciphers`
-6. **Registry Deep Dive**: Navigate the Windows Registry to find hidden configuration keys
-7. **Task Scheduler & Services**: Investigate scheduled tasks and services to find malicious activity
-8. **Event Log Forensics**: Analyze Windows Event Logs to trace security incidents
-9. **Disk Forensics & File Recovery**: Recover deleted files and analyze disk partitions
-10. **PowerShell Scripting Challenge**: Use PowerShell to automate tasks and solve complex problems
-## Installation & Setup 
+### 🪟 Niveaux Windows :
+1. **Défi d'introduction** : Naviguez dans les dossiers et découvrez les fichiers cachés | Commandes Windows de base `dir`, `cd`, `type`, `cls`, `echo`
+2. **Permissions et propriété** : Consultez et modifiez les droits des fichiers | `icacls`, `attrib`, `takeown`
+3. **Recherche sur le système** : Traquez les fichiers cachés et lisez les journaux | `findstr`, `where`, `tree`
+4. **Défi réseau** : Scannez le réseau et vérifiez les services | `ping`, `tracert`, `netstat`, `curl`, `ipconfig`
+5. **Cryptographie et décodage** : Décodez les messages et inspectez les hachages | `base64`, `certutil`, chiffrements simples
+6. **Exploration approfondie du registre** : Naviguez dans le registre Windows pour trouver des clés de configuration cachées
+7. **Planificateur de tâches et services** : Enquêtez sur les tâches planifiées et les services à la recherche d'activités malveillantes
+8. **Forensique des journaux d'événements** : Analysez les journaux d'événements Windows pour retracer les incidents de sécurité
+9. **Forensique du disque et récupération de fichiers** : Récupérez les fichiers supprimés et analysez les partitions
+10. **Défi de scripts PowerShell** : Utilisez PowerShell pour automatiser des tâches et résoudre des problèmes complexes
+
+## Installation et mise en route
 
 ----
 
-### 🐧 Run Locally for Linux
+### 🐧 Exécution locale sous Linux
 
-
-#### Step 1: Clone the repo
+#### Étape 1 : Cloner le dépôt
 ```bash
-git clone https://github.com/diversionsec/TerminalWarrior.git
+git clone https://github.com/WinnyKing57/TerminalWarrior.git
 ```
-#### Step 2: Enter the project repo
+#### Étape 2 : Entrer dans le dossier du projet
 ```bash
 cd TerminalWarrior
 ```
-#### Step 3: Install dependencies
+#### Étape 3 : Installer les dépendances
 ```bash
-pip install -r requirements.txt
+pip install pyfiglet
 ```
-#### step 4: Run the CLI Lab
+#### Étape 4 : Lancer le CLI Lab
 ```bash
 python -m cli_lab.main
 ```
 
-### 🪟 Run Locally for Windows
+### 🪟 Exécution locale sous Windows
 
-#### Step 1: Clone the repo
+#### Étape 1 : Cloner le dépôt
 ```bash
-git clone https://github.com/diversionsec/TerminalWarrior.git
+git clone https://github.com/WinnyKing57/TerminalWarrior.git
 ```
-#### Step 2: Enter the project
+#### Étape 2 : Entrer dans le dossier du projet
 ```bash
 cd TerminalWarrior
 ```
-#### Step 3: Install dependencies
+#### Étape 3 : Installer les dépendances
 ```bash
-pip install -r requirements.txt
+pip install pyfiglet
 ```
-#### Step 4: Run the CLI Lab
+#### Étape 4 : Lancer le CLI Lab
 ```bash
 python -m cli_lab.main
 ```

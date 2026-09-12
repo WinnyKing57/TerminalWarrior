@@ -21,34 +21,34 @@ from cli_lab.levels.windows import (
 def main():
     while True:
         print("=== TerminalWarrior ===\n")
-        print("1) Linux Challenges")
-        print("2) Windows Challenges")
-        print("0) Exit\n")
+        print("1) Défis Linux")
+        print("2) Défis Windows")
+        print("0) Quitter\n")
 
-        terminal_choice = input("Select a Terminal: ").strip()
+        terminal_choice = input("Sélectionnez un terminal : ").strip()
 
         if terminal_choice == "1":
             linux_menu()
         elif terminal_choice == "2":
             windows_menu()
         elif terminal_choice == "0":
-            print("Goodbye")
+            print("Au revoir")
             break
         else:
-            print("Invalid choice!\n")
+            print("Choix invalide !\n")
 
 
 def linux_menu():
     while True:
-        print("\n=== Linux Levels ===")
-        print("1) Level 1 - Intro Challenge")
-        print("2) Level 2 - Permissions")
-        print("3) Level 3 - Searching the System")
-        print("4) Level 4 - Networking")
-        print("5) Level 5 - Cryptography & Decoding")
-        print("0) Back\n")
+        print("\n=== Niveaux Linux ===")
+        print("1) Niveau 1 - Défi d'introduction")
+        print("2) Niveau 2 - Permissions et propriété")
+        print("3) Niveau 3 - Recherche sur le système")
+        print("4) Niveau 4 - Réseau")
+        print("5) Niveau 5 - Cryptographie et décodage")
+        print("0) Retour\n")
 
-        choice = input("Select a level: ").strip()
+        choice = input("Sélectionnez un niveau : ").strip()
 
         if choice == "1":
             linux_level1.main()
@@ -63,25 +63,25 @@ def linux_menu():
         elif choice == "0":
             return
         else:
-            print("Invalid choice!\n")
+            print("Choix invalide !\n")
 
 
 def windows_menu():
     while True:
-        print("\n=== Windows Levels ===")
-        print("1) Level 1 - Intro Challenge")
-        print("2) Level 2 - Permissions & Ownership")
-        print("3) Level 3 - Searching the System")
-        print("4) Level 4 - Networking Challenge")
-        print("5) Level 5 - Cryptography & Decoding")
-        print("6) Level 6 - Registry Deep Dive")
-        print("7) Level 7 - Task Scheduler & Services")
-        print("8) Level 8 - Event Log Forensics")
-        print("9) Level 9 - Disk Forensics & File Recovery")
-        print("10) Level 10 - PowerShell Scripting Challenge")
-        print("0) Back\n")
+        print("\n=== Niveaux Windows ===")
+        print("1) Niveau 1 - Défi d'introduction")
+        print("2) Niveau 2 - Permissions et propriété")
+        print("3) Niveau 3 - Recherche sur le système")
+        print("4) Niveau 4 - Défi réseau")
+        print("5) Niveau 5 - Cryptographie et décodage")
+        print("6) Niveau 6 - Exploration du registre")
+        print("7) Niveau 7 - Planificateur de tâches et services")
+        print("8) Niveau 8 - Forensique des journaux d'événements")
+        print("9) Niveau 9 - Forensique du disque et récupération de fichiers")
+        print("10) Niveau 10 - Défi de scripts PowerShell")
+        print("0) Retour\n")
 
-        choice = input("Select a level: ").strip()
+        choice = input("Sélectionnez un niveau : ").strip()
 
         if choice == "1":
             win_level1.run_level()
@@ -106,7 +106,7 @@ def windows_menu():
         elif choice == "0":
             return
         else:
-            print("Invalid choice!\n")
+            print("Choix invalide !\n")
 
 
 if __name__ == "__main__":

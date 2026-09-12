@@ -11,12 +11,12 @@ from .utils import (
 
 
 def run_level():
-    title = "LEVEL 9: DISK FORENSICS & FILE RECOVERY"
+    title = "NIVEAU 9 : FORENSIQUE DU DISQUE ET RÉCUPÉRATION DE FICHIERS"
     objectives = [
-        "Analyze disk volumes and partitions.",
-        "Recover a deleted file from the Recycle Bin."
+        "Analyser les volumes et les partitions du disque.",
+        "Récupérer un fichier supprimé depuis la Corbeille."
     ]
-    hint = "Try: 'list volume' (or 'wmic logicaldisk get name,filesystem') then 'dir /a C:\\$Recycle.Bin'."
+    hint = "Essayez : 'list volume' (ou 'wmic logicaldisk get name,filesystem') puis 'dir /a C:\\$Recycle.Bin'."
 
     print_header(title)
     print_objectives(objectives, hint)
@@ -63,9 +63,9 @@ def run_level():
                 if "d3l3t3d.txt" in user_input.lower():
                     if volumes_checked:
                         print("\n[RECOVERED FILE]")
-                        print("Recovered Flag: TW_DISK_RECOVERY_9\n")
+                        print("Drapeau récupéré : TW_DISK_RECOVERY_9\n")
                         time.sleep(1)
-                        print_success("Deleted file recovered. Level 9 Complete.")
+                        print_success("Fichier supprimé récupéré. Niveau 9 terminé.")
                         return True
                     else:
                         print("ERROR: Analyze volumes before recovery.")

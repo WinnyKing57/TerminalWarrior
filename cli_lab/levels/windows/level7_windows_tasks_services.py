@@ -11,12 +11,12 @@ from .utils import (
 
 
 def run_level():
-    title = "LEVEL 7: TASK SCHEDULER & SERVICES"
+    title = "NIVEAU 7 : PLANIFICATEUR DE TÂCHES ET SERVICES"
     objectives = [
-        "Inspect scheduled tasks for suspicious entries.",
-        "Inspect services for persistence indicators."
+        "Inspecter les tâches planifiées pour détecter des entrées suspectes.",
+        "Inspecter les services pour détecter des signes de persistance."
     ]
-    hint = "Use 'schtasks /query /fo list /v' and 'sc query'."
+    hint = "Utilisez 'schtasks /query /fo list /v' et 'sc query'."
 
     print_header(title)
     print_objectives(objectives, hint)
@@ -62,7 +62,7 @@ def run_level():
 
             if tasks_checked and services_checked:
                 time.sleep(1)
-                print_success("Persistence identified. Flag: TW_TASK_PERSISTENCE_7")
+                print_success("Persistance identifiée. Flag : TW_TASK_PERSISTENCE_7")
                 return True
 
         except KeyboardInterrupt:

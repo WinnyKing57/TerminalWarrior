@@ -5,31 +5,31 @@ import pyfiglet
 def build_challenge_list(state):
     return [
         "",
-        f"{'✅' if state[1] else '◻️'} 1) Read the Flag.txt.",
+        f"{'✅' if state[1] else '◻️'} 1) Lire le fichier Flag.txt.",
         "",
-        f"{'✅' if state[2] else '◻️'} 2) Find the ssh username for other computer.",
+        f"{'✅' if state[2] else '◻️'} 2) Trouver le nom d'utilisateur ssh de l'autre ordinateur.",
         "",
-        f"{'✅' if state[3] else '◻️'} 3) Find the ssh password for other computer.",
+        f"{'✅' if state[3] else '◻️'} 3) Trouver le mot de passe ssh de l'autre ordinateur.",
         "",
-        f"{'✅' if state[4] else '◻️'} 4) Find the IP address for other computer.",
+        f"{'✅' if state[4] else '◻️'} 4) Trouver l'adresse IP de l'autre ordinateur.",
         "",
-        f"{'✅' if state[5] else '◻️'} 5) Successfully ssh into other computer.",
+        f"{'✅' if state[5] else '◻️'} 5) Se connecter en ssh à l'autre ordinateur.",
         "",
-        f"{'✅' if state[6] else '◻️'} 6) Find hidden.txt and read it on other computer.",
+        f"{'✅' if state[6] else '◻️'} 6) Trouver hidden.txt et le lire sur l'autre ordinateur.",
         "",
     ]
 
 
 def print_help():
-    print(" help - Display this help menu")
-    print(" challenge - Display the list of challenges and your progress")
-    print(" exit - Exit the terminal")
-    print(" -ls / -la - list Files in current directory")
-    print(" cat <file> - Read a file, cat is short for concatenate")
-    print(" cd <dir> - Change to a Directory")
-    print(" pwd - Print Working Directory, prints current directory path")
-    print(" whoami - Displays the name of user you are logged in as")
-    print(" ssh <Username>@<IP>- Create a secure peer to peer connection to another computer")
+    print(" help - Affiche ce menu d'aide")
+    print(" challenge - Affiche la liste des défis et votre progression")
+    print(" exit - Quitte le terminal")
+    print(" ls / ls -la - Liste les fichiers du répertoire courant")
+    print(" cat <fichier> - Lit un fichier, cat est l'abréviation de concatenate")
+    print(" cd <dossier> - Change de répertoire")
+    print(" pwd - Affiche le chemin du répertoire courant (Print Working Directory)")
+    print(" whoami - Affiche le nom de l'utilisateur actuellement connecté")
+    print(" ssh <Utilisateur>@<IP> - Crée une connexion sécurisée à un autre ordinateur")
 
 
 def print_challenges(state):
@@ -54,9 +54,9 @@ def main():
     ascii_banner = pyfiglet.figlet_format("TERMINALWARRIOR", font="small")
     print(ascii_banner)
 
-    print("\nWelcome to Challenge level 1 (INTRO) made by (Diversion/diversionsec)\n")
-    print("type the commands 'help' and 'challenge to access help menu and view challenges.")
-    input("Press Enter to continue...")
+    print("\nBienvenue au niveau 1 (INTRO) réalisé par (Diversion/diversionsec)\n")
+    print("Tapez 'help' et 'challenge' pour accéder au menu d'aide et consulter les défis.")
+    input("Appuyez sur Entrée pour continuer...")
     print("")
 
     print_challenges(challenge_state)
@@ -85,7 +85,7 @@ def main():
 
     while True:
         if on_remote:
-            prompt = f" " + ssh_username + "@linux:~$ "
+            prompt = f"{randomusername}@linux:~$ "
         else:
             prompt = f"user@linux:{current_directory}$ "
 
@@ -96,14 +96,11 @@ def main():
             continue
 
         if command == "exit":
-            print("Goodbye")
-            break
-
             if on_remote:
-                print("Logging out of remote machine.")
+                print("Déconnexion de la machine distante.")
                 on_remote = False
                 continue
-            print("logout")
+            print("Au revoir")
             break
 
         if command == "challenge":
@@ -138,57 +135,57 @@ def main():
                 if current_directory == "~":
                     if filename == "notes.txt":
                         print(
-                            f"The ssh IP address for the other computer is {other_ip_address}")
+                            f"L'adresse IP ssh de l'autre ordinateur est {other_ip_address}")
                         if not challenge_state[4]:
                             challenge_state[4] = True
                             print(
-                                "You completed challenge 4! Type 'challenge' to see your progress.")
+                                "Vous avez terminé le défi 4 ! Tapez 'challenge' pour voir votre progression.")
                     elif filename == "Bin.txt":
-                        print("Just some random binary notes...")
+                        print("Juste des notes binaires au hasard...")
                     else:
                         print(f"cat: {filename}: No such file")
                 elif current_directory == "~/Flag":
                     if filename == "Flag.txt":
                         print(
-                            "You completed challenge 1! Type 'challenge' to see your progress.")
+                            "Vous avez terminé le défi 1 ! Tapez 'challenge' pour voir votre progression.")
                         challenge_state[1] = True
                     elif filename == "birthday.txt":
-                        print("Happy Birthday John!")
+                        print("Joyeux anniversaire John !")
                     elif filename == "something.txt":
-                        print("I don't know what to put here.")
+                        print("Je ne sais pas quoi mettre ici.")
                     else:
                         print(f"cat: {filename}: No such file")
                 elif current_directory == "~/Documents":
                     if filename == "ssh_Username.txt":
-                        print("You found the ssh_Username.txt!")
-                        print("Username:", randomusername)
+                        print("Vous avez trouvé le fichier ssh_Username.txt !")
+                        print("Utilisateur :", randomusername)
                         if not challenge_state[2]:
                             challenge_state[2] = True
                             print(
-                                "You completed challenge 2! Type 'challenge' to see your progress.")
+                                "Vous avez terminé le défi 2 ! Tapez 'challenge' pour voir votre progression.")
                     elif filename == "ssh_Password.txt":
-                        print("You found the ssh_Password.txt!")
-                        print("Password:", randompassword)
+                        print("Vous avez trouvé le fichier ssh_Password.txt !")
+                        print("Mot de passe :", randompassword)
                         if not challenge_state[3]:
                             challenge_state[3] = True
                             print(
-                                "You completed challenge 3! Type 'challenge' to see your progress.")
+                                "Vous avez terminé le défi 3 ! Tapez 'challenge' pour voir votre progression.")
                     else:
                         print(f"cat: {filename}: No such file")
                 else:
                     print(f"cat: {filename}: No such file")
             elif command == "ssh " + randomusername + "@" + other_ip_address + "":
-                print("Attempting to ssh into other computer...")
+                print("Tentative de connexion ssh à l'autre ordinateur...")
                 password_input = input("Password: ").strip()
 
                 if password_input == randompassword:
                     print(
-                        "Correct credentials. Successfully ssh'd into other computer.")
+                        "Identifiants corrects. Connexion ssh réussie à l'autre ordinateur.")
                     on_remote = True
                     if not challenge_state[5]:
                         challenge_state[5] = True
                         print(
-                            "You completed challenge 5! Type 'challenge' to see your progress.")
+                            "Vous avez terminé le défi 5 ! Tapez 'challenge' pour voir votre progression.")
                 else:
                     print("Authentication failed.")
             elif command == "":
@@ -197,14 +194,14 @@ def main():
                 print(f"{command}: command not found")
         else:
             if command == "ls":
-                print("Use -la to find the hidden.txt")
+                print("Utilisez ls -la pour trouver le fichier hidden.txt")
             elif command == "ls -la":
                 print(".  ..  hidden.txt")
             elif command == "cat hidden.txt":
-                print("You found the hidden.txt! You completed challenge 6!")
+                print("Vous avez trouvé hidden.txt ! Défi 6 terminé !")
                 if not challenge_state[6]:
                     challenge_state[6] = True
-                    print("Type 'challenge' to see your progress.")
+                    print("Tapez 'challenge' pour voir votre progression.")
             elif command == "":
                 continue
             else:

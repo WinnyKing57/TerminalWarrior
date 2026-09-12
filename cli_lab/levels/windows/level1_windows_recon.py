@@ -11,12 +11,12 @@ from .utils import (
 
 
 def run_level():
-    title = "LEVEL 1: INTRO CHALLENGE"
+    title = "NIVEAU 1 : DÉFI D'INTRODUCTION"
     objectives = [
-        "Navigate folders to uncover a hidden file.",
-        "Read the hidden file to extract credentials."
+        "Naviguer dans les dossiers pour découvrir un fichier caché.",
+        "Lire le fichier caché pour extraire des identifiants."
     ]
-    hint = "Use 'dir', 'dir /a', and 'cd' to explore. Read files with 'type'."
+    hint = "Utilisez 'dir', 'dir /a' et 'cd' pour explorer. Lisez les fichiers avec 'type'."
 
     print_header(title)
     print_objectives(objectives, hint)
@@ -74,24 +74,24 @@ def run_level():
             elif cmd in ["type", "cat"]:
                 target = args[0].lower() if args else ""
                 if current_dir == CURRENT_DIR and target == "readme.txt":
-                    print("Welcome agent. Explore the Intel folder for operational notes.")
+                    print("Bienvenue agent. Explorez le dossier Intel pour des notes opérationnelles.")
                 elif current_dir == f"{CURRENT_DIR}\\Intel" and target == "brief.txt":
-                    print("Brief: Locate hidden notes and extract credentials.")
+                    print("Briefing : trouvez les notes cachées et extrayez les identifiants.")
                 elif current_dir == f"{CURRENT_DIR}\\Intel" and target == "notes.txt":
                     if hidden_revealed:
                         print("\n[NOTES.TXT]")
                         print("-" * 30)
-                        print("Username: admin_root")
-                        print("Temp Password: Winter2026!")
-                        print("Next: Use proper ownership tools to access locked files.")
+                        print("Nom d'utilisateur : admin_root")
+                        print("Mot de passe temporaire : Winter2026!")
+                        print("Prochaine étape : utilisez les outils de propriété pour accéder aux fichiers verrouillés.")
                         print("-" * 30)
                         time.sleep(1)
-                        print_success("Hidden file recovered. Level 1 Complete.")
+                        print_success("Fichier caché récupéré. Niveau 1 terminé.")
                         return True
                     else:
                         print("Access Denied: File is hidden.")
                 elif current_dir == f"{CURRENT_DIR}\\Public" and target == "welcome.txt":
-                    print("Welcome. Nothing sensitive here.")
+                    print("Bienvenue. Rien de sensible ici.")
                 else:
                     print("The system cannot find the file specified.")
             else:

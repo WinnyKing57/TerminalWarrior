@@ -11,12 +11,12 @@ from .utils import (
 
 
 def run_level():
-    title = "LEVEL 6: REGISTRY DEEP DIVE"
+    title = "NIVEAU 6 : EXPLORATION DU REGISTRE"
     objectives = [
-        "Locate the hidden configuration key in the registry.",
-        "Extract the secret value to advance."
+        "Localiser la clé de configuration cachée dans le registre.",
+        "Extraire la valeur secrète pour progresser."
     ]
-    hint = r"Try: reg query HKCU\Software\TerminalWarrior\Hidden /v Secret"
+    hint = r"Essayez : reg query HKCU\Software\TerminalWarrior\Hidden /v Secret"
 
     print_header(title)
     print_objectives(objectives, hint)
@@ -41,7 +41,7 @@ def run_level():
                     print(r"\nHKEY_CURRENT_USER\Software\TerminalWarrior\Hidden")
                     print("    Secret    REG_SZ    TW_REGISTRY_6\n")
                     time.sleep(1)
-                    print_success("Registry key located. Level 6 Complete.")
+                    print_success("Clé de registre localisée. Niveau 6 terminé.")
                     return True
                 else:
                     print("ERROR: The system was unable to find the specified registry key or value.")

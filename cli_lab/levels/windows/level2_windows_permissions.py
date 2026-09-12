@@ -11,12 +11,12 @@ from .utils import (
 
 
 def run_level():
-    title = "LEVEL 2: PERMISSIONS & OWNERSHIP"
+    title = "NIVEAU 2 : PERMISSIONS ET PROPRIÉTÉ"
     objectives = [
-        "The file 'secret.txt' is protected. Gain access to read it.",
-        "Use ownership and ACL commands to unlock the file."
+        "Le fichier 'secret.txt' est protégé. Obtenez l'accès pour le lire.",
+        "Utilisez les commandes de propriété et d'ACL pour déverrouiller le fichier."
     ]
-    hint = "Try: 'takeown /f secret.txt' then 'icacls secret.txt /grant user:(F)'."
+    hint = "Essayez : 'takeown /f secret.txt' puis 'icacls secret.txt /grant user:(F)'."
 
     print_header(title)
     print_objectives(objectives, hint)
@@ -83,10 +83,10 @@ def run_level():
                     elif permissions_granted:
                         print("\n[SECRET.TXT]")
                         print("-" * 30)
-                        print("Clue: Level 3 key is buried in audit logs.")
+                        print("Indice : la clé du niveau 3 est enfouie dans les journaux d'audit.")
                         print("-" * 30)
                         time.sleep(1)
-                        print_success("Permissions fixed. Level 2 Complete.")
+                        print_success("Permissions corrigées. Niveau 2 terminé.")
                         return True
                     else:
                         print("Access Denied: Permissions required.")
