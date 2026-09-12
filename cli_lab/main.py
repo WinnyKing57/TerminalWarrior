@@ -1,6 +1,5 @@
 import os
 import sys
-import time
 
 # Allow running as a script: python .\cli_lab\main.py
 if __name__ == "__main__" and __package__ is None:
@@ -91,7 +90,8 @@ def main():
     while True:
         print("=== TerminalWarrior ===")
         print(f"\nProgression : Linux {progression.count_done(data, 'linux')}/{len(LINUX_LEVELS)} · "
-              f"Windows {progression.count_done(data, 'windows')}/{len(WINDOWS_LEVELS)}\n")
+              f"Windows {progression.count_done(data, 'windows')}/{len(WINDOWS_LEVELS)} · "
+              f"Score : {progression.get_score(data)} pts\n")
         print("1) Défis Linux")
         print("2) Défis Windows")
         print("0) Quitter\n")
@@ -125,16 +125,14 @@ def linux_menu(data):
             continue
 
         label, level = LINUX_LEVELS[choice]
-        start = time.time()
         try:
             completed = level.main()
         except KeyboardInterrupt:
             completed = False
-        elapsed = time.time() - start
         if completed:
-            progression.mark_done(data, "linux", choice, elapsed)
+            progression.mark_done(data, "linux", choice)
             progression.save_progress(data)
-            print(f"\n✅ Niveau {choice} terminé ! Temps : {progression.format_time(elapsed)}")
+            print(f"\n✅ Niveau {choice} terminé ! +{progression.points_for('linux', choice)} points")
         else:
             print("\nNiveau non terminé.")
 
@@ -155,16 +153,14 @@ def windows_menu(data):
             continue
 
         label, level = WINDOWS_LEVELS[choice]
-        start = time.time()
         try:
             completed = level.run_level()
         except KeyboardInterrupt:
             completed = False
-        elapsed = time.time() - start
         if completed:
-            progression.mark_done(data, "windows", choice, elapsed)
+            progression.mark_done(data, "windows", choice)
             progression.save_progress(data)
-            print(f"\n✅ Niveau {choice} terminé ! Temps : {progression.format_time(elapsed)}")
+            print(f"\n✅ Niveau {choice} terminé ! +{progression.points_for('windows', choice)} points")
         else:
             print("\nNiveau non terminé.")
 
