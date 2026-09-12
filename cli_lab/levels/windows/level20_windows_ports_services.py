@@ -26,6 +26,8 @@ def run_level():
 
     done = set()
     evil_pid = random.randint(3000, 4999)
+    web_pid = random.randint(500, 999)
+    http_pid = random.randint(1000, 1999)
     listener_alive = True
 
     while True:
@@ -61,8 +63,8 @@ def run_level():
                             print("Vous avez terminé l'objectif 2 ! Identifiez ce processus avec tasklist.\n")
                 elif "listening" in low:
                     print("\n  Proto  Local Address          Foreign Address        State          PID")
-                    print("  TCP    0.0.0.0:22             0.0.0.0:0              LISTENING      744")
-                    print("  TCP    0.0.0.0:80             0.0.0.0:0              LISTENING      980")
+                    print("  TCP    0.0.0.0:22             0.0.0.0:0              LISTENING      %d" % web_pid)
+                    print("  TCP    0.0.0.0:80             0.0.0.0:0              LISTENING      %d" % http_pid)
                     if listener_alive:
                         print("  TCP    0.0.0.0:31337          0.0.0.0:0              LISTENING      %d" % evil_pid)
                     print("\nLe port 31337 est en écoute : service inconnu !")
@@ -71,8 +73,8 @@ def run_level():
                         print_objective_done(1)
                 else:
                     print("\n  Proto  Local Address          Foreign Address        State          PID")
-                    print("  TCP    0.0.0.0:22             0.0.0.0:0              LISTENING      744")
-                    print("  TCP    0.0.0.0:80             0.0.0.0:0              LISTENING      980")
+                    print("  TCP    0.0.0.0:22             0.0.0.0:0              LISTENING      %d" % web_pid)
+                    print("  TCP    0.0.0.0:80             0.0.0.0:0              LISTENING      %d" % http_pid)
                     if listener_alive:
                         print("  TCP    0.0.0.0:31337          0.0.0.0:0              LISTENING      %d" % evil_pid)
                     print("\nLe port 31337 est en écoute : identifiez le processus.")
@@ -97,7 +99,7 @@ def run_level():
                 else:
                     print("\nImage Name                    PID     Session Name        Session#    Mem Usage")
                     print("==========================  ======  ================  ==========  ============")
-                    print("svchost.exe                   744    Services              0        22,400 K")
+                    print("svchost.exe                   %d    Services              0        22,400 K" % web_pid)
                     print("System Idle Process             4    Services              0         8 K")
                     print(f"nc.exe                         {evil_pid}    Console                 1     4,120 K")
                     if 3 not in done:

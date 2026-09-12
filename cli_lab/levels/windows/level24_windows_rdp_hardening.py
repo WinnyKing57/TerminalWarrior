@@ -1,3 +1,4 @@
+import random
 import time
 from .utils import (
     print_header,
@@ -28,6 +29,7 @@ def run_level():
 
     done = set()
     rdp_disabled = False
+    rdp_pid = random.randint(500, 999)
 
     while True:
         try:
@@ -87,7 +89,7 @@ def run_level():
                     done.add(2)
                     print("Vous avez terminé l'objectif 2 ! Repérez le port 3389.\n")
             elif cmd == "netstat" and "findstr" in low and "3389" in low:
-                print("\n  TCP    0.0.0.0:3389   0.0.0.0:0    LISTENING        654")
+                print("\n  TCP    0.0.0.0:3389   0.0.0.0:0    LISTENING        %d" % rdp_pid)
                 print("\nLe port 3389 est ouvert : RDP est exposé !")
                 if 3 not in done:
                     done.add(3)

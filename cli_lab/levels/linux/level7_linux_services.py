@@ -216,5 +216,7 @@ def main():
 
         print(f"{cmd}: command not found")
 
+    return all(challenge_state.values())
+
 if __name__ == "__main__":
     main()

@@ -16,10 +16,14 @@ Défi de cybersécurité en ligne de commande conteneurisé, développé en Pyth
 
 ## ✨ Fonctionnalités
 - 🟦 **Simulation de terminal style Linux/Windows** (Python uniquement)
-- 🧩 **Plusieurs niveaux à difficulté croissante**
+- 🧩 **Niveaux à difficulté croissante** (19 Linux + 24 Windows + 2 bonus)
 - 💻 **Commandes réalistes** (`ls`, `cat`, `cd`, `chmod`, `sudo`, etc.)
 - 📌 **Suivi de progression avec liste de défis**
+- 💾 **Sauvegarde de progression automatique** (fichier JSON + horodatage des niveaux terminés)
+- 🥷 **Niveaux bonus** avec drapeaux (flags) encodés en deux couches (hexadécimal + base64)
+- 🎲 **Scénarios aléatoires** à chaque partie (PID, adresses IP, noms de fichiers)
 - 🐳 **Support Docker complet** (aucune installation requise)
+- 🧪 **Suite de tests** (pytest) exécutée automatiquement en CI
 - 🖥️ **Multi-plateforme** — Windows, macOS, Linux
 
 ## Vue d'ensemble des niveaux
@@ -45,6 +49,7 @@ Défi de cybersécurité en ligne de commande conteneurisé, développé en Pyth
 17. **Liens symboliques et montages** : Neutralisez un lien symbolique malveillant | `ls -la`, `readlink`, `file`, `lsblk`, `rm`, `ln -s`
 18. **Scripts shell** : Créez et exécutez un script de nettoyage | `touch`, `echo`, `cat`, `chmod +x`, `./script.sh`
 19. **Durcissement SSH** : Interdisez la connexion root par mot de passe | `grep`, `sudo sed -i`, `ssh-keygen`, `systemctl restart ssh`
+20. **🎁 BONUS - Décryptage de flag** : Décodez un drapeau à deux couches | `xxd`, `base64 -d`, `echo`
 
 ### 🪟 Niveaux Windows :
 1. **Défi d'introduction** : Naviguez dans les dossiers et découvrez les fichiers cachés | Commandes Windows de base `dir`, `cd`, `type`, `cls`, `echo`
@@ -71,6 +76,7 @@ Défi de cybersécurité en ligne de commande conteneurisé, développé en Pyth
 22. **Jonctions et disques** : Neutralisez une jonction malveillante | `dir`, `fsutil reparsepoint query`, `wmic logicaldisk`, `rmdir`, `mklink /D`
 23. **Scripts batch et PowerShell** : Créez et exécutez un script de nettoyage | `echo >`, `type`, `where`, `cleanup.bat`
 24. **Durcissement RDP** : Désactivez le Bureau à distance exposé | `reg query`, `reg add`, `sc query TermService`, `netstat`
+25. **🎁 BONUS - Décryptage de flag** : Décodez un drapeau à deux couches | `type`, `certutil -decodehex`, `certutil -decode`, `echo`
 
 ## Installation et mise en route
 
@@ -95,7 +101,25 @@ pip install pyfiglet
 python -m cli_lab.main
 ```
 
-### 🪟 Exécution locale sous Windows
+### 🐳 Lancement avec Docker
+
+#### Étape 1 : Construire l'image
+```bash
+docker build -t terminal-warrior .
+```
+#### Étape 2 : Lancer un conteneur interactif
+```bash
+docker run -it --rm terminal-warrior
+```
+
+### 🧪 Exécution des tests
+
+La suite de tests pytest est exécutée automatiquement en CI (`.github/workflows/ci.yml`).
+Pour la lancer en local :
+```bash
+pip install pytest
+python -m pytest tests/ -q
+```
 
 #### Étape 1 : Cloner le dépôt
 ```bash
