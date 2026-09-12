@@ -31,6 +31,14 @@ Défi de cybersécurité en ligne de commande conteneurisé, développé en Pyth
 3. **Recherche sur le système** : Trouvez les fichiers cachés et analysez les journaux | `grep`, `find`, `locate`, `which`, `whereis`
 4. **Défi réseau** : Découvrez les hôtes et les services | `ping`, `netcat`, `traceroute`, `nmap`
 5. **Cryptographie et décodage** : Décodez les messages cachés et les fichiers de hachage | `base64`, hachage, chiffrements simples
+6. **Processus et surveillance système** : Repérez et arrêtez un processus de minage malveillant | `uname`, `uptime`, `free`, `df`, `ps`, `pgrep`, `kill`
+7. **Services et systemd** : Enquêtez sur un service de porte dérobée | `systemctl`, `journalctl`
+8. **Gestion de paquets (APT)** : Mettez à jour le système et gérez les paquets | `apt update`, `apt upgrade`, `apt install`, `apt remove`
+9. **Pare-feu (UFW)** : Sécurisez la machine en configurant le pare-feu | `sudo ufw status`, `enable`, `allow`, `deny`, `default`
+10. **Utilisateurs et groupes** : Créez des comptes et neutralisez un intrus | `id`, `groups`, `groupadd`, `useradd`, `usermod`, `userdel`
+11. **Journaux et surveillance** : Retracez une attaque en analysant les journaux | `tail`, `head`, `grep`, `journalctl -xe`, `dmesg`
+12. **Archivage et compression** : Extrayez et analysez une sauvegarde suspecte | `file`, `tar`, `gzip`, `gunzip`
+13. **Tâches planifiées (Cron)** : Découvrez et supprimez une tâche cron malveillante | `crontab`, `cat /etc/crontab`, `ls /etc/cron.d`, `rm`
 
 ### 🪟 Niveaux Windows :
 1. **Défi d'introduction** : Naviguez dans les dossiers et découvrez les fichiers cachés | Commandes Windows de base `dir`, `cd`, `type`, `cls`, `echo`
