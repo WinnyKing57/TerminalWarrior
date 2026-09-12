@@ -94,14 +94,28 @@ git clone https://github.com/WinnyKing57/TerminalWarrior.git
 ```bash
 cd TerminalWarrior
 ```
-#### Étape 3 : Installer les dépendances
+#### Étape 3 : Installer les prérequis système (Debian/Ubuntu)
 ```bash
-pip install -r requirements.txt
+sudo apt update
+sudo apt install python3 python3-pip python3-venv
 ```
-#### Étape 4 : Lancer le CLI Lab
+#### Étape 4 : Créer et activer un environnement virtuel
+Un environnement virtuel isole les dépendances du jeu de celles du système, ce qui évite les conflits (et l'erreur `externally-managed-environment` sur Debian 12+).
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+#### Étape 5 : Installer les dépendances dans le venv
+```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+#### Étape 6 : Lancer le CLI Lab
 ```bash
 python -m cli_lab.main
 ```
+
+> **💡 Astuce** : à chaque nouvelle session de terminal, réactivez l'environnement virtuel avec `source .venv/bin/activate` avant de revenir à l'étape 6.
 
 ### 🐳 Lancement avec Docker
 
@@ -117,9 +131,9 @@ docker run -it --rm terminal-warrior
 ### 🧪 Exécution des tests
 
 La suite de tests pytest est exécutée automatiquement en CI (`.github/workflows/ci.yml`).
-Pour la lancer en local :
+Pour la lancer en local (environnement virtuel activé) :
 ```bash
-pip install pytest
+python -m pip install pytest
 python -m pytest tests/ -q
 ```
 
@@ -133,14 +147,22 @@ git clone https://github.com/WinnyKing57/TerminalWarrior.git
 ```bash
 cd TerminalWarrior
 ```
-#### Étape 3 : Installer les dépendances
-```bash
-pip install -r requirements.txt
+#### Étape 3 : Créer et activer un environnement virtuel
+```powershell
+py -m venv .venv
+.venv\Scripts\activate
 ```
-#### Étape 4 : Lancer le CLI Lab
+#### Étape 4 : Installer les dépendances dans le venv
+```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+#### Étape 5 : Lancer le CLI Lab
 ```bash
 python -m cli_lab.main
 ```
+
+> **💡 Astuce** : à chaque nouvelle session, réactivez l'environnement virtuel avec `.venv\Scripts\activate` avant de revenir à l'étape 5.
 
 ## 🧑‍💻 Contribuer
 
