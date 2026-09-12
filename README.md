@@ -11,7 +11,7 @@ Défi de cybersécurité en ligne de commande conteneurisé, développé en Pyth
 > les **commandes à saisir**, les noms de fichiers et les sorties simulant un
 > vrai terminal sont conservées en anglais.
 
-##  Vue d'ensemble ![Python](https://img.shields.io/badge/python-3.9%2B-blue) ![License](https://img.shields.io/badge/licence-MIT-green) [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/WinnyKing57/TerminalWarrior) [![GitHub Stars](https://img.shields.io/github/stars/WinnyKing57/TerminalWarrior?style=social)](https://github.com/WinnyKing57/TerminalWarrior)
+##  Vue d'ensemble ![Python](https://img.shields.io/badge/python-3.9%2B-blue) ![License](https://img.shields.io/badge/licence-MIT-green) [![CI](https://github.com/WinnyKing57/TerminalWarrior/actions/workflows/ci.yml/badge.svg)](https://github.com/WinnyKing57/TerminalWarrior/actions/workflows/ci.yml) [![GitHub Stars](https://img.shields.io/github/stars/WinnyKing57/TerminalWarrior?style=social)](https://github.com/WinnyKing57/TerminalWarrior)
 **TerminalWarrior** est un jeu d'entraînement interactif en ligne de commande où les joueurs explorent un système de fichiers Linux/Windows simulé pour découvrir des drapeaux (flags), mots de passe et secrets en utilisant de vraies commandes de terminal.
 
 ## ✨ Fonctionnalités
@@ -19,8 +19,9 @@ Défi de cybersécurité en ligne de commande conteneurisé, développé en Pyth
 - 🧩 **Niveaux à difficulté croissante** (19 Linux + 24 Windows + 2 bonus)
 - 💻 **Commandes réalistes** (`ls`, `cat`, `cd`, `chmod`, `sudo`, etc.)
 - 📌 **Suivi de progression avec liste de défis**
-- 💾 **Sauvegarde de progression automatique** (fichier JSON + horodatage des niveaux terminés)
+- 💾 **Sauvegarde de progression automatique** (fichier JSON + horodatage des niveaux terminés, stocké dans `~/.terminal_warrior_progress.json`)
 - 🏆 **Compteur de score** (points gagnés par niveau terminé)
+- 📊 **Menu « Progression »** : score total, temps par niveau et pourcentage complété
 - 🥷 **Niveaux bonus** avec drapeaux (flags) encodés en deux couches (hexadécimal + base64)
 - 🎲 **Scénarios aléatoires** à chaque partie (PID, adresses IP, noms de fichiers)
 - 🐳 **Support Docker complet** (aucune installation requise)
@@ -95,7 +96,7 @@ cd TerminalWarrior
 ```
 #### Étape 3 : Installer les dépendances
 ```bash
-pip install pyfiglet
+pip install -r requirements.txt
 ```
 #### Étape 4 : Lancer le CLI Lab
 ```bash
@@ -122,6 +123,8 @@ pip install pytest
 python -m pytest tests/ -q
 ```
 
+### 🪟 Exécution locale sous Windows
+
 #### Étape 1 : Cloner le dépôt
 ```bash
 git clone https://github.com/WinnyKing57/TerminalWarrior.git
@@ -132,9 +135,25 @@ cd TerminalWarrior
 ```
 #### Étape 3 : Installer les dépendances
 ```bash
-pip install pyfiglet
+pip install -r requirements.txt
 ```
 #### Étape 4 : Lancer le CLI Lab
 ```bash
 python -m cli_lab.main
 ```
+
+## 🧑‍💻 Contribuer
+
+La branche `main` est **protégée** (push direct interdit). Pour toute modification :
+
+1. Créez une branche : `git checkout -b feature/ma-modif`
+2. Commitez puis poussez : `git push origin feature/ma-modif`
+3. Ouvrez une pull request vers `main` : `gh pr create --fill`
+4. La CI (`pytest tests/ -q`) doit passer avant le merge.
+5. Mergez la PR (merge ou squash), puis supprimez la branche.
+
+Règles appliquées sur `main` :
+- Pull request obligatoire (aucun push direct)
+- Statut CI `test` requis
+- **1 approbation requise** pour les autres contributeurs (le propriétaire est exempté de l'approbation)
+- Force-push et suppression de branche interdits
