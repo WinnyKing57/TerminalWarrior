@@ -8,7 +8,7 @@ if __name__ == "__main__" and __package__ is None:
     if repo_root not in sys.path:
         sys.path.insert(0, repo_root)
 
-from cli_lab import progression
+from cli_lab import progression, terminal
 from cli_lab.levels.linux import level1_linux_intro as linux_level1, level2_linux_permissions as linux_level2, level3_linux_searching as linux_level3, level4_linux_networking as linux_level4, level5_linux_cryptography as linux_level5
 from cli_lab.levels.linux import level6_linux_processes as linux_level6, level7_linux_services as linux_level7, level8_linux_apt as linux_level8, level9_linux_ufw as linux_level9
 from cli_lab.levels.linux import level10_linux_users as linux_level10, level11_linux_logs as linux_level11, level12_linux_archives as linux_level12, level13_linux_cron as linux_level13
@@ -88,6 +88,7 @@ WINDOWS_LEVELS = {
 
 def main():
     data = progression.load_progress()
+    terminal.install()
     while True:
         print("=== TerminalWarrior ===")
         print(f"\nProgression : Linux {progression.count_done(data, 'linux')}/{len(LINUX_LEVELS)} · "
