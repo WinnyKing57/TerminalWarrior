@@ -14,6 +14,16 @@ from cli_lab.levels.windows import level1_windows_recon as win_level1, level2_wi
 from cli_lab.levels.windows import (
     level10_windows_powershell as win_level10,
 )
+from cli_lab.levels.windows import (
+    level11_windows_processes as win_level11,
+    level12_windows_services as win_level12,
+    level13_windows_updates as win_level13,
+    level14_windows_firewall as win_level14,
+    level15_windows_users_groups as win_level15,
+    level16_windows_event_logs as win_level16,
+    level17_windows_archives as win_level17,
+    level18_windows_scheduled_tasks as win_level18,
+)
 
 from cli_lab.levels.windows import (
     level10_windows_powershell as win_level10,
@@ -105,6 +115,14 @@ def windows_menu():
         print("8) Niveau 8 - Forensique des journaux d'événements")
         print("9) Niveau 9 - Forensique du disque et récupération de fichiers")
         print("10) Niveau 10 - Défi de scripts PowerShell")
+        print("11) Niveau 11 - Processus et performance")
+        print("12) Niveau 12 - Services et démarrage")
+        print("13) Niveau 13 - Mises à jour et logiciels")
+        print("14) Niveau 14 - Pare-feu Windows Defender")
+        print("15) Niveau 15 - Utilisateurs et groupes")
+        print("16) Niveau 16 - Journaux d'événements")
+        print("17) Niveau 17 - Archivage et extraction")
+        print("18) Niveau 18 - Tâches planifiées (schtasks)")
         print("0) Retour\n")
 
         choice = input("Sélectionnez un niveau : ").strip()
@@ -129,6 +147,22 @@ def windows_menu():
             win_level9.run_level()
         elif choice == "10":
             win_level10.run_level()
+        elif choice == "11":
+            win_level11.run_level()
+        elif choice == "12":
+            win_level12.run_level()
+        elif choice == "13":
+            win_level13.run_level()
+        elif choice == "14":
+            win_level14.run_level()
+        elif choice == "15":
+            win_level15.run_level()
+        elif choice == "16":
+            win_level16.run_level()
+        elif choice == "17":
+            win_level17.run_level()
+        elif choice == "18":
+            win_level18.run_level()
         elif choice == "0":
             return
         else:

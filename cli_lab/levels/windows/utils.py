@@ -36,6 +36,9 @@ def print_success(message):
     print("="*60)
     input(" Appuyez sur ENTRÉE pour continuer...")
 
+def print_objective_done(number):
+    print(f"\nVous avez terminé l'objectif {number} ! Continuez avec la commande suivante.\n")
+
 def print_windows_motd():
     build = random.choice(["10.0.19045.4046", "10.0.22621.2861", "10.0.19045.3930"])
     uptime_days = random.randint(0, 12)

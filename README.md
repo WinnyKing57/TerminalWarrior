@@ -51,6 +51,14 @@ Défi de cybersécurité en ligne de commande conteneurisé, développé en Pyth
 8. **Forensique des journaux d'événements** : Analysez les journaux d'événements Windows pour retracer les incidents de sécurité
 9. **Forensique du disque et récupération de fichiers** : Récupérez les fichiers supprimés et analysez les partitions
 10. **Défi de scripts PowerShell** : Utilisez PowerShell pour automatiser des tâches et résoudre des problèmes complexes
+11. **Processus et performance** : Repérez et arrêtez un processus de minage malveillant | `systeminfo`, `wmic`, `tasklist`, `taskkill`
+12. **Services et démarrage** : Enquêtez sur un service de porte dérobée | `sc query`, `sc stop`, `sc config`, `net start`
+13. **Mises à jour et logiciels** : Mettez à jour le système et gérez les logiciels | `winget`, `dism`
+14. **Pare-feu Windows Defender** : Sécurisez la machine avec le pare-feu | `netsh advfirewall`
+15. **Utilisateurs et groupes** : Créez des comptes et neutralisez un intrus | `net user`, `net localgroup`
+16. **Journaux d'événements** : Retracez une attaque dans le journal Security | `wevtutil`, `Get-WinEvent`
+17. **Archivage et extraction** : Extrayez et analysez une sauvegarde suspecte | `Expand-Archive`, `tar`, `type`
+18. **Tâches planifiées (schtasks)** : Découvrez et supprimez une tâche malveillante | `schtasks /query`, `/delete`
 
 ## Installation et mise en route
 
