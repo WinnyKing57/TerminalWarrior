@@ -18,6 +18,7 @@ Défi de cybersécurité en ligne de commande conteneurisé, développé en Pyth
 - 🟦 **Simulation de terminal style Linux/Windows** (Python uniquement)
 - 🧩 **Niveaux à difficulté croissante** (19 Linux + 24 Windows + 2 bonus)
 - 💻 **Commandes réalistes** (`ls`, `cat`, `cd`, `chmod`, `sudo`, etc.)
+- ⌨️ **Tab-complétion et historique** des commandes (flèche ↑, Ctrl-R)
 - 📌 **Suivi de progression avec liste de défis**
 - 💾 **Sauvegarde de progression automatique** (fichier JSON + horodatage des niveaux terminés, stocké dans `~/.terminal_warrior_progress.json`)
 - 🏆 **Compteur de score** (points gagnés par niveau terminé)
