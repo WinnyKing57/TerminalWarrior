@@ -23,6 +23,16 @@ def build_challenge_list(state):
     ]
 
 def print_help():
+    print("=" * 60)
+    print("    TERMINAL WARRIOR - AIDE DU NIVEAU 5 (CRYPTOGRAPHIE)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Manipuler les outils de chiffrement et d'empreinte : calculer des")
+    print("   sommes de contrôle (md5/sha256), chiffrer/déchiffrer un fichier")
+    print("   avec openssl, générer une clé aléatoire et utiliser GPG.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -35,6 +45,22 @@ def print_help():
     print(" gpg --decrypt <fichier> - Déchiffre avec GPG")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'md5sum secret.txt' : empreinte MD5 du fichier (défi 1).")
+    print(" 2. Chiffrez avec AES : 'openssl enc -aes-256-cbc -in secret.txt")
+    print("    -out encrypted.bin -encrypt -k pass' (défi 2).")
+    print(" 3. Déchiffrez : 'openssl enc -aes-256-cbc -d -in encrypted.bin")
+    print("    -out decrypted.txt -k pass' (défi 3).")
+    print(" 4. 'sha256sum secret.txt' : empreinte SHA256 (plus robuste, défi 4).")
+    print(" 5. 'openssl rand -hex 32' : génère une clé aléatoire de 32 octets (défi 5).")
+    print(" 6. 'gpg --symmetric secret.txt' : chiffrement symétrique GPG (défi 6).")
+    print(" 7. 'gpg --decrypt secret.txt.gpg' : déchiffrement GPG (défi 7).")
+    print("")
+    print(" ASTUCE : MD5 et SHA256 servent à VÉRIFIER l'intégrité d'un fichier ;")
+    print(" openssl et GPG servent à chiffrer. Le mot de passe d'openssl est")
+    print(" libre ('pass' convient), mais doit être le même pour chiffrer et")
+    print(" déchiffrer.")
 
 def print_challenges(state):
     for line in build_challenge_list(state):

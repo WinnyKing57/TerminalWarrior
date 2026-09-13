@@ -21,6 +21,14 @@ def run_level():
         "Vérifier l'empreinte du fichier hosts avec certutil et PowerShell.",
         "Comparer avec l'empreinte officielle puis restaurer le fichier."
     ]
+    Guide = [
+        "certutil -hashfile C:\\Windows\\System32\\drivers\\etc\\hosts SHA256 — Calculer l'empreinte SHA256 actuelle du fichier hosts.",
+        "type C:\\tools\\hosts.expected — Afficher l'empreinte officielle connue pour la comparer.",
+        "fc /b C:\\Windows\\System32\\drivers\\etc\\hosts C:\\tools\\hosts.orig — Comparer les fichiers en binaire pour confirmer la modification.",
+        "copy /y C:\\tools\\hosts.orig C:\\Windows\\System32\\drivers\\etc\\hosts — Restaurer le fichier hosts depuis la version originale.",
+        "powershell \"Get-FileHash -Algorithm SHA256 -Path C:\\Windows\\System32\\drivers\\etc\\hosts\" — Recalculer l'empreinte pour vérifier la restauration.",
+        "Si l'empreinte calculée ne correspond pas à hosts.expected, le fichier hosts a été altéré : restaurez-le.",
+    ]
     hint = "Essayez : certutil -hashfile C:\\Windows\\System32\\drivers\\etc\\hosts SHA256"
 
     print_header(title)
@@ -39,7 +47,7 @@ def run_level():
             arg_str = " ".join(args)
             low = user_input.lower()
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

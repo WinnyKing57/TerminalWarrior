@@ -19,6 +19,15 @@ def run_level():
         "Décoder le drapeau chiffré en deux couches (hexadécimal puis base64).",
         "Lire le drapeau en clair et le soumettre avec echo."
     ]
+    Guide = [
+        "type flag_t.enc — Afficher le contenu chiffré : une longue chaîne hexadécimale.",
+        "certutil -decodehex flag_t.enc r.b64 — Décoder la couche hexadécimale pour produire le fichier base64 r.b64.",
+        "type r.b64 — Lire la couche intermédiaire encodée en base64.",
+        "certutil -decode r.b64 clean.txt — Décoder la base64 pour produire le texte clair dans clean.txt.",
+        "type clean.txt — Lire le drapeau en clair à la fin du pipeline.",
+        "echo <FLAG> — Soumettre la valeur exacte du drapeau trouvé pour valider le niveau.",
+        "Le pipeline est : hexadécimal → base64 → texte clair. Décodage obligatoire à chaque couche.",
+    ]
     hint = "Essayez : type <fichier>, puis certutil -decodehex"
 
     print_header(title)
@@ -70,7 +79,7 @@ def run_level():
                     print(submitted)
                 continue
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

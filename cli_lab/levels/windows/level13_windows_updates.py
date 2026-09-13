@@ -17,6 +17,16 @@ def run_level():
         "Actualiser les dépôts et mettre à jour les logiciels installés.",
         "Installer nmap, supprimer Telnet et vérifier l'installation."
     ]
+    Guide = [
+        "winget source update — Actualise les dépôts de logiciels disponibles.",
+        "winget upgrade — Affiche les logiciels à mettre à jour et leurs versions disponibles.",
+        "winget upgrade --all — Installe toutes les mises à jour disponibles d'un coup.",
+        "winget search nmap — Recherche le paquet nmap dans les dépôts winget.",
+        "winget install nmap — Installe Nmap (identifiant : Insecure.Nmap).",
+        "dism /online /disable-feature /featurename:TelnetClient — Désactive le client Telnet pour sécuriser le système.",
+        "winget list --id Insecure.Nmap — Vérifie que Nmap est bien installé.",
+        "Suivez l'ordre : mise à jour → installation nmap → suppression Telnet → vérification.",
+    ]
     hint = "Essayez : winget source update, puis winget upgrade --all"
 
     print_header(title)
@@ -34,7 +44,7 @@ def run_level():
             arg_str = " ".join(args)
             low = user_input.lower()
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

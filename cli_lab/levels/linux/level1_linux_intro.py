@@ -21,6 +21,17 @@ def build_challenge_list(state):
 
 
 def print_help():
+    print("=" * 60)
+    print("       TERMINAL WARRIOR - AIDE DU NIVEAU 1 (INTRO)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Vous devez rejoindre un autre ordinateur via SSH et récupérer")
+    print("   un fichier caché. Pour cela, il faut d'abord trouver, sur la")
+    print("   machine locale, le nom d'utilisateur, le mot de passe et l'adresse")
+    print("   IP de la machine distante.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche la liste des défis et votre progression")
     print(" exit - Quitte le terminal")
@@ -30,6 +41,21 @@ def print_help():
     print(" pwd - Affiche le chemin du répertoire courant (Print Working Directory)")
     print(" whoami - Affiche le nom de l'utilisateur actuellement connecté")
     print(" ssh <Utilisateur>@<IP> - Crée une connexion sécurisée à un autre ordinateur")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. Naviguez avec 'ls' et 'cd' pour explorer les dossiers et")
+    print("    repérez le fichier Flag.txt avec 'cat'.")
+    print(" 2. Les informations SSH (utilisateur et mot de passe) se trouvent")
+    print("    dans le dossier Documents. Explorez-le puis lisez les fichiers")
+    print("    ssh_Username.txt et ssh_Password.txt avec 'cat'.")
+    print(" 3. Notes.txt contient l'adresse IP de la machine distante.")
+    print(" 4. Une fois tout en main, connectez-vous avec")
+    print("    'ssh <Utilisateur>@<IP>' et saisissez le mot de passe.")
+    print(" 5. Une fois connecté, utilisez 'ls -la' pour dévoiler le fichier")
+    print("    caché puis 'cat hidden.txt' pour terminer.")
+    print("")
+    print(" ASTUCE : 'cat' affiche le contenu des fichiers. Pensez à vérifier")
+    print(" chaque dossier que vous trouvez avec 'ls'.")
 
 
 def print_challenges(state):

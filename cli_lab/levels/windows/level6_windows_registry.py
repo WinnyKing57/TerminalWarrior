@@ -16,6 +16,12 @@ def run_level():
         "Localiser la clé de configuration cachée dans le registre.",
         "Extraire la valeur secrète pour progresser."
     ]
+    Guide = [
+        "reg query — interroge les clés et valeurs du registre Windows.",
+        "La persistance et les secrets sont souvent stockés dans HKCU\\Software.",
+        "repérez la clé TerminalWarrior\\Hidden qui contient les configurations cachées du jeu.",
+        "reg query HKCU\\Software\\TerminalWarrior\\Hidden /v Secret — affiche la valeur Secret, le mot de passe du niveau.",
+    ]
     hint = r"Essayez : reg query HKCU\Software\TerminalWarrior\Hidden /v Secret"
 
     print_header(title)
@@ -30,7 +36,7 @@ def run_level():
             args = parts[1:]
             arg_str = " ".join(args)
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

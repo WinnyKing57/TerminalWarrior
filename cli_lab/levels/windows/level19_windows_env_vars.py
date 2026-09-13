@@ -17,6 +17,15 @@ def run_level():
         "Repérer le PATH détourné et la variable MALVAR ajoutée par l'attaquant.",
         "Réparer le PATH et purger la variable malveillante."
     ]
+    Guide = [
+        "set — Afficher toutes les variables d'environnement pour repérer le PATH suspect et la variable MALVAR.",
+        "echo %PATH% — Vérifier le PATH : un dossier non système (Temp, Tools) en tête est un signe de détournement.",
+        "echo %MALVAR% — Vérifier la variable malveillante qui pointe vers C:\\Tools\\evil.dll.",
+        "set PATH=%SystemRoot%\\system32;%SystemRoot% — Réparer le PATH en ne gardant que les chemins système légitimes.",
+        "set MALVAR= — Vider la variable MALVAR pour supprimer la référence à la DLL malveillante.",
+        "set — Vérifier que le PATH est réparé et que MALVAR est vide.",
+        "Le PATH hijacking place le dossier de l'attaquant devant les chemins système pour exécuter une fausse commande.",
+    ]
     hint = "Essayez : set, puis echo %PATH%"
 
     print_header(title)
@@ -36,7 +45,7 @@ def run_level():
             arg_str = " ".join(args)
             low = user_input.lower()
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

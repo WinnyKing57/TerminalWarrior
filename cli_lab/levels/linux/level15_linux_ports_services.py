@@ -21,6 +21,15 @@ def build_challenge_list(state):
     ]
 
 def print_help():
+    print("=" * 60)
+    print("   TERMINAL WARRIOR - AIDE DU NIVEAU 15 (PORTS ET SERVICES RÉSEAU)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Un service inconnu écoute sur le port 31337. Identifiez le processus")
+    print("   responsable, confirmez qu'il s'agit d'une backdoor, puis mettez-y fin.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -32,6 +41,18 @@ def print_help():
     print(" kill -9 <PID> - Termine un processus")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'netstat -tulpn' : liste les ports en écoute ; repérez 31337 lié à nc.")
+    print(" 2. 'ss -tulpn' : confirme la socket en écoute et son PID (nc).")
+    print(" 3. 'lsof -i :31337' : identifie précisément le processus sur ce port.")
+    print(" 4. 'nmap localhost' : scanne les ports locaux et confirme 31337 ouvert.")
+    print(" 5. 'curl http://localhost:31337' : révèle un service qui propose un shell distant.")
+    print(" 6. 'kill -9 <PID>' : termine le processus nc avec le PID exact affiché.")
+    print(" 7. 'netstat -tulpn' : vérifie que le port 31337 a disparu, niveau validé.")
+    print("")
+    print(" ASTUCE : Gardez le PID affiché par 'ss -tulpn' ou 'lsof -i :31337' :")
+    print("          tuer un autre PID renvoie 'No such process'.")
 
 def print_challenges(state):
     for line in build_challenge_list(state):

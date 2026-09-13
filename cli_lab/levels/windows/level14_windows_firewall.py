@@ -17,6 +17,15 @@ def run_level():
         "Activer le pare-feu et refuser le trafic entrant par défaut.",
         "Autoriser SSH (port 22), bloquer le port 8080 et vérifier les règles."
     ]
+    Guide = [
+        "netsh advfirewall show allprofiles state — Vérifie l'état actuel du pare-feu sur tous les profils.",
+        "netsh advfirewall set allprofiles state on — Active le pare-feu sur tous les profils.",
+        "netsh advfirewall set allprofiles firewallpolicy blockinbound,allowoutbound — Bloque le trafic entrant par défaut.",
+        "netsh advfirewall firewall add rule name=SSH dir=in action=allow protocol=TCP localport=22 — Autorise SSH.",
+        "netsh advfirewall firewall add rule name=Block8080 dir=in action=block protocol=TCP localport=8080 — Bloque le port 8080.",
+        "netsh advfirewall firewall show rule name=all — Vérifie toutes les règles configurées.",
+        "Suivez l'ordre : vérifier état → activer → politique → règle SSH → règle 8080 → vérifier.",
+    ]
     hint = "Essayez : netsh advfirewall show allprofiles state"
 
     print_header(title)
@@ -35,7 +44,7 @@ def run_level():
             arg_str = " ".join(args)
             low = user_input.lower()
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

@@ -62,7 +62,7 @@ def print_windows_motd():
 
 def build_prompt(current_dir):
     return f"User@WS-OPS-01:{current_dir}> "
-def generic_cmd_handler(cmd, args):
+def generic_cmd_handler(cmd, args, level_guide=None):
     if cmd in ["cls", "clear"]:
         clear_screen()
         return True
@@ -73,6 +73,27 @@ def generic_cmd_handler(cmd, args):
         print(" PERM:   attrib  takeown  icacls")
         print(" NET:    ipconfig  ping  tracert  netstat  arp  curl")
         print(" SYS:    reg  schtasks  sc  wevtutil  diskpart  wmic")
+        print("\n EXPLICATIONS DES COMMANDES CLÉS :")
+        print("  dir            - Liste les fichiers du dossier courant (ajoutez /a pour")
+        print("                   révéler les fichiers cachés ou de système).")
+        print("  cd <dossier>   - Change de dossier (cd .. revient au dossier parent).")
+        print("  type <fichier> - Affiche le contenu d'un fichier texte.")
+        print("  findstr ...    - Recherche une chaîne de caractères dans des fichiers.")
+        print("  attrib <f>     - Affiche/modifie les attributs (H=caché, S=système).")
+        print("  takeown /f <f> - Prend la propriété d'un fichier (nécessite des droits).")
+        print("  icacls <f> /grant user:(F) - Octroie le contrôle total sur un fichier.")
+        print("  ipconfig       - Affiche la configuration IP de la machine.")
+        print("  ping <hôte>    - Teste la connectivité réseau.")
+        print("  netstat -an    - Affiche les ports ouverts et les connexions actives.")
+        print("  reg query ...  - Interroge le registre Windows.")
+        print("  schtasks ...   - Gère les tâches planifiées (persistance).")
+        print("  sc query ...   - Interroge l'état des services.")
+        print("  wevtutil qe ...- Interroge les journaux d'événements.")
+        print("  powershell \"...\" - Exécute une commande PowerShell.")
+        if level_guide:
+            print("\n--- CONSEILS DU NIVEAU EN COURS ---")
+            for line in level_guide:
+                print(" " + line)
         print("\nAstuce : utilisez 'dir /a' pour révéler les fichiers cachés.")
         return True
     elif cmd == "whoami":

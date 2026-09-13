@@ -16,6 +16,12 @@ def run_level():
         "Inspecter les tâches planifiées pour détecter des entrées suspectes.",
         "Inspecter les services pour détecter des signes de persistance."
     ]
+    Guide = [
+        "schtasks /query /fo list /v — liste les tâches planifiées en détail et révèle le chemin exécutable de la tâche.",
+        "Repérez la tâche WindowsUpdateCache et son exécutable suspect svchost_cache.exe.",
+        "sc query — liste les services : surveillez WinDefendCache, lancé depuis defender_cache.exe.",
+        "Le niveau se termine quand la tâche planifiée ET le service suspects ont tous deux été inspectés.",
+    ]
     hint = "Utilisez 'schtasks /query /fo list /v' et 'sc query'."
 
     print_header(title)
@@ -33,7 +39,7 @@ def run_level():
             args = parts[1:]
             arg_str = " ".join(args)
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

@@ -19,6 +19,16 @@ def build_challenge_list(state):
     ]
 
 def print_help():
+    print("=" * 60)
+    print("   TERMINAL WARRIOR - AIDE DU NIVEAU 11 (JOURNAUX ET SURVEILLANCE)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Des connexions suspectes ont été enregistrées sur la machine.")
+    print("   Inspectez les journaux système pour découvrir les tentatives d'accès")
+    print("   et confirmer la trace de l'attaque.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -30,6 +40,17 @@ def print_help():
     print(" dmesg - Affiche les messages du noyau")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'tail -n 50 /var/log/syslog' : affiche les 50 dernières lignes du journal système.")
+    print(" 2. 'head -n 20 /var/log/syslog' : affiche le début du journal.")
+    print(" 3. 'grep sshd /var/log/auth.log' : recherche les tentatives de connexion SSH.")
+    print(" 4. 'journalctl -xe' : consulte les dernières entrées du journal systemd.")
+    print(" 5. 'dmesg' : affiche les messages du noyau (passage d'une interface en mode promiscuous).")
+    print(" 6. 'cat /var/log/syslog' : lit le journal complet et confirme la compromission.")
+    print("")
+    print(" ASTUCE : la dernière ligne du journal /var/log/syslog est la preuve de l'attaque ;")
+    print("          croisez dmesg (mode promiscuous) et grep sshd pour bâtir votre analyse.")
 
 def print_challenges(state):
     for line in build_challenge_list(state):

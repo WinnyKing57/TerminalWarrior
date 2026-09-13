@@ -16,6 +16,14 @@ def run_level():
         "Analyser les volumes et les partitions du disque.",
         "Récupérer un fichier supprimé depuis la Corbeille."
     ]
+    Guide = [
+        "list volume — Affiche la liste des volumes du disque. Repérez les partitions disponibles (C:, D:).",
+        "wmic logicaldisk get name,filesystem — Alternative pour lister les disques logiques et leur système de fichiers.",
+        "dir /a C:\\$Recycle.Bin — Listez le contenu de la Corbeille y compris les fichiers cachés.",
+        "type d3l3t3d.txt — Lisez le fichier récupéré pour obtenir le drapeau de niveau.",
+        "Vous devez analyser les volumes AVANT de pouvoir récupérer le fichier.",
+        "Le fichier supprimé se trouve dans C:\\$Recycle.Bin et s'appelle D3L3T3D.txt.",
+    ]
     hint = "Essayez : 'list volume' (ou 'wmic logicaldisk get name,filesystem') puis 'dir /a C:\\$Recycle.Bin'."
 
     print_header(title)
@@ -32,7 +40,7 @@ def run_level():
             args = parts[1:]
             arg_str = " ".join(args)
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

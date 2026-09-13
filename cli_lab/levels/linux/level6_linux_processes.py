@@ -21,6 +21,16 @@ def build_challenge_list(state):
     ]
 
 def print_help():
+    print("=" * 60)
+    print("   TERMINAL WARRIOR - AIDE DU NIVEAU 6 (PROCESSUS)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Un mineur de cryptomonnaie s'exécute en secret et sature le CPU.")
+    print("   Vous devez analyser le système, repérer le processus malveillant,")
+    print("   obtenir son PID puis le tuer pour restaurer la machine.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -34,6 +44,19 @@ def print_help():
     print(" kill -9 <PID> - Termine un processus")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'uname -a' : identifiez le système (défi 1).")
+    print(" 2. 'uptime' : remarquez la charge élevée (load average).")
+    print(" 3. 'free -h' : vérifiez la mémoire (défi 3).")
+    print(" 4. 'df -h' : vérifiez l'espace disque (défi 4).")
+    print(" 5. 'ps aux' : repérez le processus suspect (fort %CPU,%MEM).")
+    print("    Ici 'cryptominer' saute aux yeux !")
+    print(" 6. 'pgrep -f cryptominer' : récupérez son PID exact.")
+    print(" 7. 'kill -9 <PID>' : tuez-le immédiatement.")
+    print("")
+    print(" ASTUCE : le PID est l'identifiant unique du processus. Le signal")
+    print(" -9 (SIGKILL) force l'arrêt immédiat sans négociation.")
 
 def print_challenges(state):
     for line in build_challenge_list(state):

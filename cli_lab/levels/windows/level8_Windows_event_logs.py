@@ -16,6 +16,12 @@ def run_level():
         "Analyser les journaux d'événements de sécurité à la recherche d'activités suspectes.",
         "Identifier l'ID d'incident lié aux échecs de connexion."
     ]
+    Guide = [
+        "wevtutil qe Security /c:10 /rd:true — affiche les 10 derniers événements du journal Security, du plus récent au plus ancien.",
+        "Repérez l'événement EventID 4625 : il signale un échec de connexion.",
+        "L'Account Name 'attacker' et l'Incident ID EVT-8-A9 sont les éléments clés à retenir.",
+        "Pensez à /c:10 pour limiter le nombre d'événements et /rd:true pour lire en ordre inverse.",
+    ]
     hint = "Essayez : wevtutil qe Security /c:10 /rd:true"
 
     print_header(title)
@@ -30,7 +36,7 @@ def run_level():
             args = parts[1:]
             arg_str = " ".join(args)
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

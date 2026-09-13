@@ -18,6 +18,14 @@ def run_level():
         "Identifier le processus min.exe qui consomme l'essentiel du CPU.",
         "Obtenir son PID via tasklist, puis le terminer avec taskkill."
     ]
+    Guide = [
+        "systeminfo — Affiche les informations système : OS, mémoire, processeur.",
+        "wmic cpu get loadpercentage — Vérifie la charge CPU actuelle pour confirmer la surconsommation.",
+        "tasklist — Liste tous les processus en cours d'exécution avec leur PID.",
+        "tasklist /fi \"imagename eq min.exe\" — Filtre pour trouver le PID exact du processus suspect min.exe.",
+        "taskkill /pid <PID> /f — Termine le processus min(force) avec le PID trouvé dans tasklist.",
+        "Le PID de min.exe change à chaque partie : regardez-le dans la sortie de tasklist.",
+    ]
     hint = "Essayez : tasklist, puis taskkill /pid <PID> /f"
 
     print_header(title)
@@ -38,12 +46,12 @@ def run_level():
             low = user_input.lower()
 
             if cmd == "whoami" or cmd == "exit":
-                common = generic_cmd_handler(cmd, arg_str)
+                common = generic_cmd_handler(cmd, arg_str, Guide)
                 if common == "EXIT":
                     return False
                 continue
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

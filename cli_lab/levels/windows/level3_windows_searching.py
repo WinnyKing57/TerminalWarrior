@@ -25,6 +25,13 @@ def run_level():
         "Localiser le fichier journal d'audit suspect.",
         "Chercher le drapeau caché dans le journal."
     ]
+    Guide = [
+        "tree — visualisez l'arborescence et repérez le dossier Logs.",
+        "dir — listez le dossier Logs : le fichier audit.log s'y trouve.",
+        "where /r . audit.log — localisez le fichier audit.log depuis la racine du système.",
+        "type audit.log — prévisualisez le journal et repérez la ligne ALERT suspecte.",
+        "findstr FLAG audit.log — cherchez le drapeau marqué FLAG dans le journal d'audit.",
+    ]
     hint = "Utilisez 'tree' pour visualiser les dossiers, 'where /r . audit.log' pour le localiser, et 'findstr FLAG audit.log'."
 
     print_header(title)
@@ -42,7 +49,7 @@ def run_level():
             args = parts[1:]
             arg_str = " ".join(args)
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

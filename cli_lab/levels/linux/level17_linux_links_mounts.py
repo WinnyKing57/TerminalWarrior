@@ -19,6 +19,16 @@ def build_challenge_list(state):
     ]
 
 def print_help():
+    print("=" * 60)
+    print("   TERMINAL WARRIOR - AIDE DU NIVEAU 17 (LIENS SYMBOLIQUES ET MONTAGE)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Un lien symbolique backup_link pointe vers un fichier sensible (/etc/shadow).")
+    print("   Analysez la situation, supprimez le lien malveillant et recréez-en un")
+    print("   pointant vers la sauvegarde légitime.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -32,6 +42,19 @@ def print_help():
     print(" df -h - Affiche l'espace disque")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'ls -la' : repère le lien suspect backup_link -> /etc/shadow.")
+    print(" 2. 'readlink backup_link' : affiche la cible exacte du lien.")
+    print(" 3. 'file backup_link' : confirme qu'il s'agit d'un lien symbolique.")
+    print(" 4. 'lsblk' : liste les périphériques de stockage.")
+    print(" 5. 'mount' : affiche les points de montage.")
+    print(" 6. 'df -h' : consulte l'espace disque.")
+    print(" 7. 'rm backup_link' : supprime le lien malveillant.")
+    print(" 8. 'ln -s /home/user/real_backup backup_link' : pointe le lien vers la sauvegarde légitime.")
+    print("")
+    print(" ASTUCE : Un 'l' en début de permissions (lrwxrwxrwx) signale un lien symbolique.")
+    print("          Un lien vers /etc/shadow expose les mots de passe : danger immédiat.")
 
 def print_challenges(state):
     for line in build_challenge_list(state):

@@ -17,6 +17,14 @@ def run_level():
         "Créer un script batch cleanup.bat qui supprime les fichiers malveillants.",
         "Le localiser, puis l'exécuter pour nettoyer C:\\Temp."
     ]
+    Guide = [
+        "echo @echo off > cleanup.bat — Créer le script batch avec l'en-tête @echo off.",
+        "echo del /f /q C:\\Temp\\malware.exe >> cleanup.bat — Ajouter la ligne de suppression du malware à la fin du script.",
+        "type cleanup.bat — Vérifier le contenu du script avant de l'exécuter.",
+        "where cleanup.bat — Localiser le script dans le système de fichiers.",
+        "cleanup.bat — Exécuter le script pour purger les fichiers malveillants.",
+        "L'opérateur > crée un fichier en l'écrasant ; >> ajoute une ligne à la fin d'un fichier existant.",
+    ]
     hint = "Essayez : echo @echo off > cleanup.bat"
 
     print_header(title)
@@ -35,7 +43,7 @@ def run_level():
             arg_str = " ".join(args)
             low = user_input.lower()
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

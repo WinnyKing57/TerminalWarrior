@@ -19,6 +19,15 @@ def build_challenge_list(state):
     ]
 
 def print_help():
+    print("=" * 60)
+    print("   TERMINAL WARRIOR - AIDE DU NIVEAU 18 (SCRIPTS SHELL)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Créez un script cleanup.sh qui supprime les fichiers malveillants,")
+    print("   rendez-le exécutable puis lancez-le pour nettoyer le système.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -31,6 +40,17 @@ def print_help():
     print(" ls -la - Liste les fichiers avec les permissions")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'touch cleanup.sh' : crée le fichier de script vide.")
+    print(" 2. 'echo '#!/bin/bash' > cleanup.sh' : écrit l'en-tête shebang indispensable.")
+    print(" 3. 'cat cleanup.sh' : vérifie le contenu du script.")
+    print(" 4. 'chmod +x cleanup.sh' : rend le script exécutable.")
+    print(" 5. './cleanup.sh' : exécute le script et supprime les fichiers malveillants.")
+    print(" 6. 'ls -la cleanup.sh' : vérifie les permissions (-rwxr-xr-x).")
+    print("")
+    print(" ASTUCE : Sans le shebang '#!/bin/bash' et sans le bit x, l'exécution par './'")
+    print("          échoue. Vérifiez toujours les permissions avec 'ls -la'.")
 
 def print_challenges(state):
     for line in build_challenge_list(state):

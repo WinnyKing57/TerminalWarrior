@@ -24,6 +24,14 @@ def run_level():
         "Utiliser PowerShell pour filtrer le texte et extraire le drapeau.",
         "Automatiser la recherche au lieu de tout lire manuellement."
     ]
+    Guide = [
+        "dir — Listez le répertoire courant pour trouver le fichier de tâches.",
+        "type tasks.txt — Affiche le contenu brut du fichier pour repérer les lignes.",
+        "powershell -command \"Get-Content tasks.txt | Select-String FLAG\" — Filtre automatiquement les lignes contenant FLAG.",
+        "Vous pouvez aussi utiliser Where-Object à la place de Select-String pour filtrer.",
+        "Le drapeau se trouve dans la ligne contenant gamma du fichier tasks.txt.",
+        "L'objectif est d'automatiser la recherche plutôt que de lire manuellement.",
+    ]
     hint = "Essayez : powershell -command \"Get-Content tasks.txt | Select-String FLAG\""
 
     print_header(title)
@@ -38,7 +46,7 @@ def run_level():
             args = parts[1:]
             arg_str = " ".join(args)
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:
