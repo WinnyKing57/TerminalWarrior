@@ -18,6 +18,15 @@ def run_level():
         "Trouver le service inconnu en écoute sur le port 31337.",
         "Identifier le processus (nc.exe), l'interroger, puis l'arrêter."
     ]
+    Guide = [
+        "netstat -ano — Lister toutes les connexions et ports en écoute pour repérer le port 31337.",
+        "netstat -ano | findstr 31337 — Filtrer les résultats pour isoler le PID du processus écoutant sur 31337.",
+        "tasklist /fi \"PID eq <PID>\" — Identifier le processus associé au PID trouvé : il s'agit de nc.exe.",
+        "curl http://localhost:31337 — Sonder le service suspect pour confirmer qu'il propose un shell distant (backdoor).",
+        "taskkill /pid <PID> /f — Terminer de force le processus malveillant.",
+        "netstat -ano | findstr 31337 — Vérifier que le port 31337 est désormais fermé.",
+        "Remplacez <PID> par la valeur affichée par netstat dans ce niveau ; le fichier guidé par tests utilise 3141.",
+    ]
     hint = "Essayez : netstat -ano, puis netstat -ano | findstr 31337"
 
     print_header(title)
@@ -39,7 +48,7 @@ def run_level():
             arg_str = " ".join(args)
             low = user_input.lower()
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

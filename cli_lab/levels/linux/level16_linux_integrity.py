@@ -20,6 +20,15 @@ def build_challenge_list(state):
     ]
 
 def print_help():
+    print("=" * 60)
+    print("   TERMINAL WARRIOR - AIDE DU NIVEAU 16 (INTÉGRITÉ DES FICHIERS)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Le binaire /usr/bin/agent a peut-être été altéré. Calculez son empreinte,")
+    print("   comparez-la au fichier de référence, puis restaurez le binaire d'origine.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -32,6 +41,17 @@ def print_help():
     print(" ls -la <fichier> - Affiche les détails d'un fichier")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'sha256sum /usr/bin/agent' : calcule l'empreinte actuelle du binaire.")
+    print(" 2. 'cat /usr/bin/agent.expected' : lit l'empreinte officielle à comparer.")
+    print(" 3. 'cmp /usr/bin/agent /usr/bin/agent.orig' : confirme que les fichiers diffèrent.")
+    print(" 4. 'md5sum /usr/bin/agent' : calcule une empreinte MD5 complémentaire.")
+    print(" 5. 'cp /usr/bin/agent.orig /usr/bin/agent' : restaure la version officielle.")
+    print(" 6. 'sha256sum /usr/bin/agent' : l'empreinte correspond désormais au fichier officiel.")
+    print("")
+    print(" ASTUCE : Le fichier 'agent.expected' est fiable : c'est l'empreinte actuelle du")
+    print("          binaire qui est falsifiée. Une fois restauré, revérifiez l'empreinte.")
 
 def print_challenges(state):
     for line in build_challenge_list(state):

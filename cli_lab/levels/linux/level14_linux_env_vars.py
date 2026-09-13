@@ -21,6 +21,16 @@ def build_challenge_list(state):
     ]
 
 def print_help():
+    print("=" * 60)
+    print("   TERMINAL WARRIOR - AIDE DU NIVEAU 14 (VARIABLES D'ENVIRONNEMENT)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Un attaquant a corrompu votre PATH et injecté une variable LD_PRELOAD")
+    print("   pour détourner vos commandes. Repérez le détournement, restaurez")
+    print("   le PATH, puis supprimez la variable malveillante.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -33,6 +43,18 @@ def print_help():
     print(" unset <VARIABLE> - Supprime une variable")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'echo $PATH' : affiche le PATH actuel, détourné vers /tmp/malware.")
+    print(" 2. 'env' : liste les variables ; repérez LD_PRELOAD et PYTHONSTARTUP.")
+    print(" 3. 'which ls' : montre que ls provient d'un faux binaire dans /tmp.")
+    print(" 4. 'echo $LD_PRELOAD' : confirme la variable qui charge le code malveillant.")
+    print(" 5. 'export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' : restaure un PATH sain.")
+    print(" 6. 'unset LD_PRELOAD' : supprime la variable de détournement.")
+    print(" 7. 'set' : vérifie que l'environnement est propre et valide le niveau.")
+    print("")
+    print(" ASTUCE : Tout ce qui pointe vers /tmp est suspect. Comparez 'echo $PATH' avant")
+    print("          et après l'export pour confirmer que la correction est appliquée.")
 
 def print_challenges(state):
     for line in build_challenge_list(state):

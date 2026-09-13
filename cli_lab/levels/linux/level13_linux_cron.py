@@ -19,6 +19,16 @@ def build_challenge_list(state):
     ]
 
 def print_help():
+    print("=" * 60)
+    print("   TERMINAL WARRIOR - AIDE DU NIVEAU 13 (TÂCHES PLANIFIÉES CRON)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Une tâche cron malveillante s'exécute toutes les 5 minutes (et un leurre")
+    print("   chaque minute). Explorez les tâches planifiées et supprimez le fichier")
+    print("   malveillant /etc/cron.d/pwn.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -32,6 +42,17 @@ def print_help():
     print(" rm <fichier> - Supprime un fichier")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'crontab -l' : affiche la crontab de l'utilisateur (téléchargement toutes les 5 minutes).")
+    print(" 2. 'cat /etc/crontab' : affiche la crontab système.")
+    print(" 3. 'ls /etc/cron.d' : liste les tâches planifiées du système.")
+    print(" 4. 'cat /etc/cron.d/pwn' : inspecte la tâche suspecte 'pwn' (exécution chaque minute).")
+    print(" 5. 'systemctl list-timers' : vérifie les minuteries systemd (normales).")
+    print(" 6. 'rm /etc/cron.d/pwn' : supprime la tâche malveillante.")
+    print("")
+    print(" ASTUCE : une entrée cron comme '*/5 * * * *' se répète toutes les 5 minutes ;")
+    print("          dans /etc/cron.d, chaque fichier est un script de tâche — 'pwn' est l'intruse.")
 
 def print_challenges(state):
     for line in build_challenge_list(state):

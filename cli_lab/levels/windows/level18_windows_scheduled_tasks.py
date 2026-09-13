@@ -17,6 +17,14 @@ def run_level():
         "Repérer la tâche planifiée malveillante 'Beacon' qui exécute un script toutes les minutes.",
         "Inspecter son action, puis la supprimer."
     ]
+    Guide = [
+        "schtasks /query /fo LIST /v — Lister toutes les tâches planifiées en détail pour repérer les entrées suspectes.",
+        "schtasks /query /tn SystemMaintenance /fo LIST /v — Inspecter la tâche légitime pour connaître son comportement normal.",
+        "schtasks /query /tn Beacon /fo LIST /v — Examiner Beacon : elle se répète chaque minute, c'est anormal.",
+        "schtasks /query /tn Beacon /xml — Afficher la définition XML de Beacon pour voir la commande malveillante qu'elle exécute.",
+        "schtasks /delete /tn Beacon /f — Supprimer la tâche malveillante sans confirmation.",
+        "Méfiez-vous d'une tâche qui se répète toutes les minutes ou qui télécharge un script : c'est de la persistance.",
+    ]
     hint = r"Essayez : schtasks /query /fo LIST /v"
 
     print_header(title)
@@ -34,7 +42,7 @@ def run_level():
             arg_str = " ".join(args)
             low = user_input.lower()
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

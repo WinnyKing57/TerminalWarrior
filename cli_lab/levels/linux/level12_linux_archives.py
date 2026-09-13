@@ -19,6 +19,16 @@ def build_challenge_list(state):
     ]
 
 def print_help():
+    print("=" * 60)
+    print("   TERMINAL WARRIOR - AIDE DU NIVEAU 12 (ARCHIVAGE ET COMPRESSION)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Une archive 'backup.tar.gz' contient une sauvegarde avec une trace")
+    print("   compromettante. Identifiez-la, extrayez-la, décompressez le journal")
+    print("   et lisez la preuve de l'attaque.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -32,6 +42,17 @@ def print_help():
     print(" cat <fichier> - Affiche le contenu d'un fichier")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'file backup.tar.gz' : identifie le type de l'archive.")
+    print(" 2. 'tar -tzf backup.tar.gz' : liste le contenu de l'archive sans l'extraire.")
+    print(" 3. 'tar -xzf backup.tar.gz' : extrait l'archive dans le dossier backup/.")
+    print(" 4. 'ls' : vérifie les fichiers extraits.")
+    print(" 5. 'gzip -d data.log.gz' : décompresse le journal.")
+    print(" 6. 'cat extracted_flag.txt' : lit la preuve de l'attaque cachée dans l'archive.")
+    print("")
+    print(" ASTUCE : dans tar, '-t' liste, '-x' extrait, '-z' gère la compression gzip et '-f'")
+    print("          précise le nom du fichier ; listez toujours une archive avant de la décompresser.")
 
 def print_challenges(state):
     for line in build_challenge_list(state):

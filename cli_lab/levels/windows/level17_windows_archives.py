@@ -17,6 +17,13 @@ def run_level():
         "Identifier une archive suspecte et l'extraire.",
         "Décompresser le journal et lire la trace cachée dans l'archive."
     ]
+    Guide = [
+        "dir — Lister les fichiers du répertoire pour repérer backup.zip et data.log.gz.",
+        "powershell \"Expand-Archive -Path backup.zip -DestinationPath .\" — Extraire le contenu de l'archive ZIP dans le répertoire courant.",
+        "tar -xzf data.log.gz — Décompresser le journal.gz pour obtenir le fichier data.log.",
+        "type extracted_flag.txt — Lire le drapeau extrait ; cette commande doit être exécutée après avoir décompressé data.log.gz.",
+        "L'ordre compte : extrayez d'abord backup.zip, puis décompressez data.log.gz avant de lire le flag.",
+    ]
     hint = r"Essayez : powershell \"Expand-Archive -Path backup.zip -DestinationPath .\""
 
     print_header(title)
@@ -35,7 +42,7 @@ def run_level():
             arg_str = " ".join(args)
             low = user_input.lower()
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

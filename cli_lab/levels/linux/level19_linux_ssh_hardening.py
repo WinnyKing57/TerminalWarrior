@@ -19,6 +19,15 @@ def build_challenge_list(state):
     ]
 
 def print_help():
+    print("=" * 60)
+    print("   TERMINAL WARRIOR - AIDE DU NIVEAU 19 (DURCISSEMENT SSH)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Le serveur SSH autorise la connexion root par mot de passe. Durcissez la")
+    print("   configuration pour l'interdire, générez des clés ed25519 puis appliquez.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -30,6 +39,18 @@ def print_help():
     print(" ssh <utilisateur>@<hote> - Se connecte en SSH")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'cat /etc/ssh/sshd_config' : inspecte la configuration SSH.")
+    print(" 2. 'grep -E \"PermitRootLogin|PasswordAuthentication\" /etc/ssh/sshd_config' : repère les options vulnérables.")
+    print(" 3. 'sudo sed -i \"s/PermitRootLogin yes/PermitRootLogin no/\" /etc/ssh/sshd_config' : interdit la connexion root.")
+    print(" 4. 'ssh-keygen -t ed25519' : génère une paire de clés moderne.")
+    print(" 5. 'sudo systemctl restart ssh' : applique la nouvelle configuration.")
+    print(" 6. 'grep PasswordAuthentication /etc/ssh/sshd_config' : vérifie que la configuration est durcie.")
+    print("")
+    print(" ASTUCE : Le redémarrage du service ssh est obligatoire pour appliquer sed.")
+    print("          Avec PermitRootLogin no et PasswordAuthentication no, les deux")
+    print("          vecteurs d'attaque principaux sont neutralisés.")
 
 def print_challenges(state):
     for line in build_challenge_list(state):

@@ -17,6 +17,16 @@ def run_level():
         "Nettoyer les comptes locaux et repérer l'intrus 'invader'.",
         "Créer l'agent 'agent' dans le groupe Administrators, puis supprimer 'invader'."
     ]
+    Guide = [
+        "whoami — Identifie l'utilisateur actuellement connecté.",
+        "net user — Liste tous les comptes utilisateurs locaux du système.",
+        "net user invader — Inspecte les détails du compte suspect (date de création, dernière connexion).",
+        "net localgroup Operations /add — Crée le groupe local Operations.",
+        "net user agent /add — Crée le nouvel utilisateur agent.",
+        "net localgroup Administrators agent /add — Ajoute agent au groupe Administrators.",
+        "net user invader /delete — Supprime le compte intrus une fois agent configuré.",
+        "Suivez l'ordre : identifier → lister → inspecter invader → créer groupe → créer agent → escalader → supprimer.",
+    ]
     hint = "Essayez : net user, puis net user invader"
 
     print_header(title)
@@ -41,7 +51,7 @@ def run_level():
                     print_objective_done(1)
                 continue
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

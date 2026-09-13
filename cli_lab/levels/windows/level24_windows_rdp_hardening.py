@@ -21,6 +21,14 @@ def run_level():
         "Constater que RDP est actif (reg query) et que le service écoute sur 3389.",
         "Désactiver RDP via la clé fDenyTSConnections et vérifier la configuration."
     ]
+    Guide = [
+        "reg query \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections — Vérifier la valeur : 0x0 signifie que RDP est autorisé.",
+        "sc query TermService — Vérifier que le service RDP (TermService) est en état RUNNING.",
+        "netstat -ano | findstr 3389 — Confirmer que le port RDP 3389 est en écoute.",
+        "reg add \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 1 /f — Désactiver RDP en définissant la valeur sur 1.",
+        "reg query \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections — Revérifier que la valeur affiche maintenant 0x1.",
+        "La valeur 0 autorise les connexions RDP ; la valeur 1 les refuse. L'option /f écrit sans demande de confirmation.",
+    ]
     hint = "Essayez : reg query \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections"
 
     print_header(title)
@@ -40,7 +48,7 @@ def run_level():
             arg_str = " ".join(args)
             low = user_input.lower()
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

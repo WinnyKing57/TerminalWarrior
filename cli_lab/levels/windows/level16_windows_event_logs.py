@@ -18,6 +18,14 @@ def run_level():
         "Retracer la tentative de connexion forcée dans le journal Security.",
         "Prouver l'attaque en retrouvant la ligne de preuve dans les événements."
     ]
+    Guide = [
+        "wevtutil el — Liste tous les journaux d'événements disponibles (Security, System, etc.).",
+        "wevtutil qe System /f:text /c:20 — Affiche les 20 derniers événements du journal System.",
+        "wevtutil qe Security \"*[System/EventID=4625]\" /c:10 — Filtre les échecs de connexion (Event ID 4625).",
+        "powershell Get-WinEvent — Utilise PowerShell pour interroger les journaux de manière avancée.",
+        "powershell Get-WinEvent -FilterHashtable @{LogName='Security';Id=4625} — Filtre les attaques par force brute.",
+        "Le journal Security contient les preuves de l'attaque par force brute avec l'adresse IP de l'attaquant.",
+    ]
     hint = "Essayez : wevtutil qe Security \"*[System/EventID=4625]\" /c:10"
 
     print_header(title)
@@ -36,7 +44,7 @@ def run_level():
             arg_str = " ".join(args)
             low = user_input.lower()
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

@@ -21,6 +21,16 @@ def build_challenge_list(state):
 
 
 def print_help():
+    print("=" * 60)
+    print("       TERMINAL WARRIOR - AIDE DU NIVEAU 3 (RECHERCHE)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Un fichier journal caché (.security.log) contient des traces")
+    print("   d'activité suspecte. Vous devez apprendre à le localiser puis à")
+    print("   fouiller son contenu pour identifier les connexions douteuses.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche la liste des défis et votre progression")
     print(" exit - Quitte le terminal")
@@ -33,6 +43,20 @@ def print_help():
     print(" grep <motif> <fichier> - Recherche dans le contenu d'un fichier")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'ls -la' : un fichier commençant par '.' est caché. Repérez")
+    print("    .security.log dans le dossier courant.")
+    print(" 2. 'find . -name .security.log' : le trouve en partant du dossier.")
+    print(" 3. 'locate .security.log' : le retrouve dans toute la base du système.")
+    print(" 4. 'which grep' et 'whereis grep' : localisez l'outil grep lui-même.")
+    print(" 5. 'grep FAILED .security.log' : extrait les tentatives de connexion")
+    print("    qui ont échoué (motif FAILED, cherchez les majuscules !).")
+    print(" 6. 'grep sshd .security.log' : confirme que le service sshd est")
+    print("    bien à l'origine des connexions -> fin du niveau.")
+    print("")
+    print(" ASTUCE : grep recherche dans le CONTENU des fichiers, pas dans les")
+    print(" noms. Les motifs sont sensibles à la casse.")
 
 
 def print_challenges(state):

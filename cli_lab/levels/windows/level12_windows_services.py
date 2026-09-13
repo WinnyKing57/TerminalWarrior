@@ -18,6 +18,15 @@ def run_level():
         "Inspecter le service pwnsvc qui écoute une porte dérobée.",
         "L'arrêter, le désactiver au démarrage, puis relancer le service SSH."
     ]
+    Guide = [
+        "sc query — Liste tous les services installés et leur état (running/stopped).",
+        "sc query \"pwnsvc\" — Inspecte le service suspect : vérifiez son PID et son exécutable.",
+        "sc stop \"pwnsvc\" — Arrête le service malveillant pwnsvc.",
+        "sc config \"pwnsvc\" start= disabled — Désactive le démarrage automatique de pwnsvc.",
+        "net start sshd — Relance le service SSH pour sécuriser l'accès distant.",
+        "sc query OpenSSHd — Vérifie que le service SSH est bien en état RUNNING.",
+        "Suivez l'ordre : inspecter → arrêter → désactiver → relancer SSH → vérifier.",
+    ]
     hint = r"Essayez : sc query, puis sc stop \"pwnsvc\""
 
     print_header(title)
@@ -37,7 +46,7 @@ def run_level():
             arg_str = " ".join(args)
             low = user_input.lower()
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

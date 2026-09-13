@@ -17,6 +17,15 @@ def run_level():
         "Repérer la jonction notes_link qui pointe vers un fichier système critique.",
         "La remplacer par une jonction légitime vers le dossier de notes."
     ]
+    Guide = [
+        "dir — Lister le répertoire pour repérer la jonction notes_link.",
+        "fsutil reparsepoint query notes_link — Inspecter la cible de la jonction : elle pointe vers C:\\Windows\\System32\\config\\SAM, c'est dangereux.",
+        "wmic logicaldisk get — Lister les disques et volumes disponibles pour comprendre le système.",
+        "rmdir notes_link — Supprimer la jonction malveillante (la cible n'est pas affectée).",
+        "mklink /D notes_link C:\\Users\\User\\real_notes — Créer une jonction de répertoire légitime vers le dossier de notes.",
+        "dir — Vérifier que notes_link pointe désormais vers real_notes.",
+        "Une jonction Windows redirige un chemin vers un autre emplacement sans copier les fichiers.",
+    ]
     hint = r"Essayez : dir, puis fsutil reparsepoint query notes_link"
 
     print_header(title)
@@ -35,7 +44,7 @@ def run_level():
             arg_str = " ".join(args)
             low = user_input.lower()
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

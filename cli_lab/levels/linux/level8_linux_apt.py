@@ -21,6 +21,16 @@ def build_challenge_list(state):
     ]
 
 def print_help():
+    print("=" * 60)
+    print("   TERMINAL WARRIOR - AIDE DU NIVEAU 8 (GESTION DES PAQUETS APT)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Le système est obsolète et il manque des outils essentiels.")
+    print("   Mettez à jour les paquets, installez nmap et supprimez le paquet")
+    print("   telnet, jugé obsolète et dangereux.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -33,6 +43,18 @@ def print_help():
     print(" apt list --installed | grep <paquet> - Vérifie l'installation")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'sudo apt update' : actualise la liste des paquets disponibles.")
+    print(" 2. 'apt list --upgradable' : affiche les paquets à mettre à jour.")
+    print(" 3. 'sudo apt upgrade -y' : applique les mises à jour du système.")
+    print(" 4. 'apt search nmap' : recherche le paquet nmap dans les dépôts.")
+    print(" 5. 'sudo apt install nmap -y' : installe le scanner de réseau nmap.")
+    print(" 6. 'sudo apt remove telnet -y' : supprime le client telnet obsolète.")
+    print(" 7. 'apt list --installed | grep nmap' : vérifie que nmap est bien installé.")
+    print("")
+    print(" ASTUCE : préfixez toujours les commandes de gestion de paquets par 'sudo' ;")
+    print("          l'option '-y' répond automatiquement OUI aux questions de confirmation.")
 
 def print_challenges(state):
     for line in build_challenge_list(state):

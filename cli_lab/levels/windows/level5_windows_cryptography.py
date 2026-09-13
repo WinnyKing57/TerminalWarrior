@@ -32,6 +32,13 @@ def run_level():
         "Décoder le fichier Base64 avec les utilitaires Windows.",
         "Résoudre le chiffrement simple pour révéler le drapeau final."
     ]
+    Guide = [
+        "dir — listez le répertoire et repérez le fichier message.b64.",
+        "type message.b64 — affichez le message encodé en Base64.",
+        "certutil -decode message.b64 message.txt — décodez le fichier Base64 vers message.txt.",
+        "type message.txt — lisez le texte décodé : il contient un indice ROT13.",
+        "rot13 <texte> — décalez chaque lettre de 13 positions pour révéler le drapeau final.",
+    ]
     hint = "Utilisez 'certutil -decode message.b64 message.txt' puis déchiffrez le ROT13."
 
     print_header(title)
@@ -48,7 +55,7 @@ def run_level():
             args = parts[1:]
             arg_str = " ".join(args)
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

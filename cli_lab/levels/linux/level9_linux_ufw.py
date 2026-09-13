@@ -19,6 +19,16 @@ def build_challenge_list(state):
     ]
 
 def print_help():
+    print("=" * 60)
+    print("   TERMINAL WARRIOR - AIDE DU NIVEAU 9 (PARE-FEU UFW)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Un service web vulnérable écoute sur le port 8080. Activez le pare-feu")
+    print("   UFW, refusez le trafic entrant par défaut, autorisez uniquement le SSH")
+    print("   (port 22) et bloquez le port 8080.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -31,6 +41,17 @@ def print_help():
     print(" sudo ufw status verbose - Affiche la configuration détaillée")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'sudo ufw status' : vérifie l'état actuel du pare-feu (inactif).")
+    print(" 2. 'sudo ufw enable' : active le pare-feu.")
+    print(" 3. 'sudo ufw default deny incoming' : bloque tout le trafic entrant par défaut.")
+    print(" 4. 'sudo ufw allow 22' : autorise le port 22 (SSH) pour ne pas perdre l'accès.")
+    print(" 5. 'sudo ufw deny 8080' : bloque le service web vulnérable.")
+    print(" 6. 'sudo ufw status verbose' : contrôle la configuration finale.")
+    print("")
+    print(" ASTUCE : autorisez toujours SSH (port 22) avant de bloquer le reste du trafic ;")
+    print("          la politique par défaut 'deny incoming' laisse quand même passer les règles 'allow'.")
 
 def print_challenges(state):
     for line in build_challenge_list(state):

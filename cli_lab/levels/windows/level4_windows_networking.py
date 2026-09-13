@@ -21,6 +21,13 @@ def run_level():
         "Vérifier la connectivité et localiser le port de service ouvert.",
         "Récupérer le jeton du service avec curl."
     ]
+    Guide = [
+        "ipconfig — affiche la configuration réseau : la passerelle par défaut est l'IP cible 10.10.5.23.",
+        "ping 10.10.5.23 — vérifiez que la cible répond avant toute tentative d'accès.",
+        "netstat -an — repérez le port 8080 ouvert et la connexion ESTABLISHED vers la cible.",
+        "tracert 10.10.5.23 — tracez la route jusqu'à la cible pour confirmer son accessibilité.",
+        "curl http://10.10.5.23:8080/ — récupérez le jeton du service. Exige que ping et netstat -an aient été validés.",
+    ]
     hint = "Essayez : 'ipconfig', 'ping <ip>', 'netstat -an', puis 'curl http://<ip>:8080/'."
 
     print_header(title)
@@ -38,7 +45,7 @@ def run_level():
             args = parts[1:]
             arg_str = " ".join(args)
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

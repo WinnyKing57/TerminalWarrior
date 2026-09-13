@@ -16,6 +16,13 @@ def run_level():
         "Le fichier 'secret.txt' est protégé. Obtenez l'accès pour le lire.",
         "Utilisez les commandes de propriété et d'ACL pour déverrouiller le fichier."
     ]
+    Guide = [
+        "dir /a — révèle le fichier caché secret.txt dans le répertoire.",
+        "attrib secret.txt — confirmez ses attributs Hidden et System.",
+        "takeown /f secret.txt — prenez la propriété du fichier, étape obligatoire.",
+        "icacls secret.txt /grant user:(F) — accordez le contrôle total ; sans takeown préalable, la commande renvoie une erreur.",
+        "type secret.txt — lisez le fichier une fois la propriété et les permissions accordées.",
+    ]
     hint = "Essayez : 'takeown /f secret.txt' puis 'icacls secret.txt /grant user:(F)'."
 
     print_header(title)
@@ -44,7 +51,7 @@ def run_level():
             args = parts[1:]
             arg_str = " ".join(args)
 
-            common = generic_cmd_handler(cmd, arg_str)
+            common = generic_cmd_handler(cmd, arg_str, Guide)
             if common == "EXIT":
                 return False
             if common:

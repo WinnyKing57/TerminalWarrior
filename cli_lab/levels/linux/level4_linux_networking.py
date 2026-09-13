@@ -21,6 +21,17 @@ def build_challenge_list(state):
     ]
 
 def print_help():
+    print("=" * 60)
+    print("      TERMINAL WARRIOR - AIDE DU NIVEAU 4 (RÉSEAU)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Découvrir les outils réseau courants : tester la connectivité,")
+    print("   tracer une route, inspecter les interfaces, lister les ports")
+    print("   ouverts, résoudre un nom DNS, se connecter via SSH puis scanner")
+    print("   les ports de la machine locale.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -35,6 +46,18 @@ def print_help():
     print(" nmap <hôte> - Scanne les ports réseau")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'ping 8.8.8.8' : simple test de connectivité (ICMP).")
+    print(" 2. 'traceroute google.com' : observe les routeurs traversés.")
+    print(" 3. 'ifconfig' ou 'ip addr' : repérez les interfaces (eth0, lo).")
+    print(" 4. 'netstat -tuln' : quels ports écoutent sur la machine ?")
+    print(" 5. 'nslookup google.com' (ou dig) : résolution DNS.")
+    print(" 6. 'ssh user@localhost' (mot de passe : user) : connexion SSH locale.")
+    print(" 7. 'nmap localhost' : scan des ports ouverts pour finir.")
+    print("")
+    print(" ASTUCE : netstat -tuln montre les services en écoute ('LISTEN') ;")
+    print(" les ports 22 (SSH), 80 (HTTP), 443 (HTTPS), 53 (DNS) sont attendus.")
 
 def print_challenges(state):
     for line in build_challenge_list(state):

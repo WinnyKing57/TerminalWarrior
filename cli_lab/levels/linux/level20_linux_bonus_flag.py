@@ -23,6 +23,16 @@ def build_challenge_list(state, names):
 
 
 def print_help():
+    print("=" * 60)
+    print("   TERMINAL WARRIOR - AIDE DU NIVEAU BONUS (DÉCRYPTAGE DE FLAG)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Le drapeau est chiffré en deux couches : hexadécimal, puis base64.")
+    print("   Décodez chaque couche dans l'ordre, lisez le drapeau en clair, puis")
+    print("   soumettez-le exactement avec 'echo'.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -33,6 +43,18 @@ def print_help():
     print(" echo <texte> - Affiche du texte (sert à soumettre le drapeau)")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'cat <fichier>.enc' : lit la première couche (longue chaîne hexadécimale).")
+    print(" 2. 'xxd -r -p <fichier>.enc <binaire>.bin' : décode l'hexadécimal en binaire.")
+    print(" 3. 'cat <binaire>.bin' : révèle la couche base64.")
+    print(" 4. 'base64 -d <binaire>.bin <texte>.txt' : décode la base64 en message clair.")
+    print(" 5. 'cat <texte>.txt' : lit le drapeau en clair.")
+    print(" 6. 'echo <FLAG>' : soumet le drapeau exactement tel qu'affiché pour valider.")
+    print("")
+    print(" ASTUCE : Chaque commande affiche un SUCCESS quand la couche est bien décodée.")
+    print("          Copiez le drapeau depuis 'cat <texte>.txt' : la soumission est")
+    print("          sensible à la casse et aux caractères.")
 
 
 def print_challenges(state, names):

@@ -19,6 +19,16 @@ def build_challenge_list(state):
     ]
 
 def print_help():
+    print("=" * 60)
+    print("   TERMINAL WARRIOR - AIDE DU NIVEAU 7 (SERVICES / SYSTEMD)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Un service 'backdoor.service' s'exécute en arrière-plan et ouvre")
+    print("   une porte dérobée (écoute sur le port 4444). Vous devez l'inspecter,")
+    print("   l'arrêter, le désactiver au démarrage puis réactiver le service SSH.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -31,6 +41,22 @@ def print_help():
     print(" journalctl -u <service> - Affiche les journaux d'un service")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
     print(" whoami - Affiche l'utilisateur courant")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'systemctl list-units --type=service' : listez les services et")
+    print("    repérez backdoor.service (il est actif : suspect !).")
+    print(" 2. 'systemctl status backdoor.service' : inspectez le service.")
+    print("    Remarquez l'écoute sur 0.0.0.0:4444 : c'est une porte dérobée.")
+    print(" 3. 'journalctl -u backdoor.service' : lisez ses journaux et voyez")
+    print("    les connexions entrantes suspectes.")
+    print(" 4. 'systemctl stop backdoor.service' : arrêtez-le.")
+    print(" 5. 'systemctl disable backdoor.service' : empêchez son démarrage")
+    print("    automatique au boot.")
+    print(" 6. 'systemctl enable sshd' : réactivez le service SSH légitime.")
+    print("")
+    print(" ASTUCE : 'stop' ne dure que jusqu'au reboot ; 'disable' supprime le")
+    print(" démarrage automatique. Les deux sont nécessaires pour se débarrasser")
+    print(" définitivement d'un service malveillant.")
 
 def print_challenges(state):
     for line in build_challenge_list(state):

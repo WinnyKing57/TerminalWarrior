@@ -21,6 +21,16 @@ def build_challenge_list(state):
     ]
 
 def print_help():
+    print("=" * 60)
+    print("   TERMINAL WARRIOR - AIDE DU NIVEAU 10 (UTILISATEURS ET GROUPES)")
+    print("=" * 60)
+    print("")
+    print(" OBJECTIF :")
+    print("   Un attaquant a créé le compte intrus 'invader' sur la machine.")
+    print("   Identifiez les comptes suspects, créez le groupe 'ops' et l'utilisateur")
+    print("   légitime 'agent', puis supprimez le compte 'invader'.")
+    print("")
+    print(" COMMANDES :")
     print(" help - Affiche ce menu d'aide")
     print(" challenge - Affiche les défis en cours")
     print(" exit - Quitte le terminal")
@@ -33,6 +43,18 @@ def print_help():
     print(" sudo usermod -aG sudo <utilisateur> - Ajoute un utilisateur au groupe sudo")
     print(" sudo userdel -r <utilisateur> - Supprime définitivement un compte")
     print(" pwd - Affiche le répertoire courant (Print Working Directory)")
+    print("")
+    print(" DÉROULÉ CONSEILLÉ :")
+    print(" 1. 'id' : affiche vos identifiants (UID/GID).")
+    print(" 2. 'groups' : affiche vos groupes.")
+    print(" 3. 'cat /etc/passwd' : liste tous les comptes et repère l'intrus 'invader'.")
+    print(" 4. 'sudo groupadd ops' : crée le groupe 'ops'.")
+    print(" 5. 'sudo useradd -m agent -g ops' : crée l'utilisateur 'agent' avec son répertoire personnel.")
+    print(" 6. 'sudo usermod -aG sudo agent' : donne les droits administrateur à 'agent'.")
+    print(" 7. 'sudo userdel -r invader' : supprime définitivement le compte intrus et son répertoire.")
+    print("")
+    print(" ASTUCE : l'option '-r' de userdel supprime aussi le répertoire personnel ;")
+    print("          '-aG' ajoute l'utilisateur à un groupe sans retirer ceux existants.")
 
 def print_challenges(state):
     for line in build_challenge_list(state):
