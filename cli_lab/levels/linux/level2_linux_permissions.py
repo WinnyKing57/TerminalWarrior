@@ -13,11 +13,11 @@ def build_challenge_list(state):
         "",
         f"{'✅' if state[4] else '◻️'} 4) Utiliser chown pour changer le propriétaire de hidden_data.txt en user.",
         "",
-        f"{'✅' if state[5] else '◻️'} 5) Relire hidden_data.txt pour confirmer l'accès.",
+        f"{'✅' if state[5] else '◻️'} 5) Relire hidden_data.txt avec read pour confirmer l'accès.",
         "",
         f"{'✅' if state[6] else '◻️'} 6) Exécuter ls pour trouver HelloWorld.exe puis read dessus.",
         "",
-        f"{'✅' if state[7] else '◻️'} 7) Passer à root avec su, chmod 777 sur HelloWorld.exe, puis relire pour finir le défi.",
+        f"{'✅' if state[7] else '◻️'} 7) Passer à root avec su, chmod 777 sur HelloWorld.exe, puis relire avec read pour finir le défi.",
         "",
     ]
 
